@@ -49,11 +49,9 @@ class Profile{
         }
         
         ManagerSingleton.shared.allProfiles = tempProfiles
-        
+        ManagerSingleton.shared.defaulfProfile = self
         
     }
-    
-    
 }
 
 

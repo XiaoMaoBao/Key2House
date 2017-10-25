@@ -17,6 +17,7 @@
 		11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */; };
 		1198E73F1F9E03F100CF6D2F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1198E73E1F9E03F100CF6D2F /* art.scnassets */; };
 		1198E7431F9E07FD00CF6D2F /* ARDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */; };
+		1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7441F9E133900CF6D2F /* BagWozModel.swift */; };
 		11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */; };
 		11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */; };
 		11DC31981F7E9C4900BDB5F4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31971F7E9C4900BDB5F4 /* SecondViewController.swift */; };
@@ -25,8 +26,9 @@
 		11DC31A01F7E9C4900BDB5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11DC319E1F7E9C4900BDB5F4 /* LaunchScreen.storyboard */; };
 		11DC31AB1F7E9C4A00BDB5F4 /* Key2HouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31AA1F7E9C4A00BDB5F4 /* Key2HouseTests.swift */; };
 		11DC31B61F7E9C4A00BDB5F4 /* Key2HouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31B51F7E9C4A00BDB5F4 /* Key2HouseUITests.swift */; };
-		11DC31C71F7E9CCF00BDB5F4 /* HouseObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31C61F7E9CCF00BDB5F4 /* HouseObjectModel.swift */; };
+		11DC31C71F7E9CCF00BDB5F4 /* DeelObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */; };
 		11DC31C91F7E9CEA00BDB5F4 /* FilterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */; };
+		11EC028A1F9F6BDA0080C174 /* MeldingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC02891F9F6BDA0080C174 /* MeldingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltermoduleTableViewCell.swift; sourceTree = "<group>"; };
 		1198E73E1F9E03F100CF6D2F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARDetailViewController.swift; path = Controllers/ARDetailViewController.swift; sourceTree = "<group>"; };
+		1198E7441F9E133900CF6D2F /* BagWozModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagWozModel.swift; sourceTree = "<group>"; };
 		11DC31901F7E9C4900BDB5F4 /* Key2House.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Key2House.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -71,8 +74,9 @@
 		11DC31B11F7E9C4A00BDB5F4 /* Key2HouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Key2HouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DC31B51F7E9C4A00BDB5F4 /* Key2HouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key2HouseUITests.swift; sourceTree = "<group>"; };
 		11DC31B71F7E9C4A00BDB5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11DC31C61F7E9CCF00BDB5F4 /* HouseObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseObjectModel.swift; sourceTree = "<group>"; };
+		11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeelObjectModel.swift; sourceTree = "<group>"; };
 		11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModule.swift; sourceTree = "<group>"; };
+		11EC02891F9F6BDA0080C174 /* MeldingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeldingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				114DD1FD1F94DB2400C2347A /* ProfileModel.swift */,
-				11DC31C61F7E9CCF00BDB5F4 /* HouseObjectModel.swift */,
+				11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */,
+				11EC02891F9F6BDA0080C174 /* MeldingModel.swift */,
 				11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */,
+				1198E7441F9E133900CF6D2F /* BagWozModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,12 +351,14 @@
 				1126912A1F84E2C800246B19 /* ProfileTableViewCell.swift in Sources */,
 				11DC31981F7E9C4900BDB5F4 /* SecondViewController.swift in Sources */,
 				114B4BAF1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift in Sources */,
+				11EC028A1F9F6BDA0080C174 /* MeldingModel.swift in Sources */,
 				11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */,
 				1138EF7C1F9CC94E007EFA96 /* ManagerSingleton.swift in Sources */,
 				114DD1FE1F94DB2400C2347A /* ProfileModel.swift in Sources */,
-				11DC31C71F7E9CCF00BDB5F4 /* HouseObjectModel.swift in Sources */,
+				11DC31C71F7E9CCF00BDB5F4 /* DeelObjectModel.swift in Sources */,
 				11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */,
 				11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */,
+				1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */,
 				11DC31C91F7E9CEA00BDB5F4 /* FilterModule.swift in Sources */,
 				1138EF801F9DF3A9007EFA96 /* ARCameraSessieViewController.swift in Sources */,
 			);

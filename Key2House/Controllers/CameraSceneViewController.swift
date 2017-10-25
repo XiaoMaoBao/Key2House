@@ -53,14 +53,14 @@ class CameraSceneViewController: UIViewController, MKMapViewDelegate, CLLocation
    
     
     override func viewDidAppear(_ animated: Bool) {
-        let profiles = manager.allProfiles
+        let profile = manager.defaulfProfile
         
-        for p in profiles {
-            if(p.defaultProfile == true){
-                self.titleNameLabel.text = p.name
-                break
-            }
+        guard let p = profile else {
+            self.titleNameLabel.text = "No profile"
+            return
         }
+        
+            self.titleNameLabel.text = profile?.name!
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

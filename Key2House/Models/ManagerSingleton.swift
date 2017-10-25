@@ -16,12 +16,11 @@ final class ManagerSingleton {
         // MARK: Shared Instance
         
         static let shared = ManagerSingleton()
-    
+
         // MARK: Local Variable
-    var allProfiles : [Profile] = [Profile(name: "Taxateur", filterModule: FilterModule(), defaultProfile : true),
+    var allProfiles : [Profile] = [Profile(name: "Taxateur", filterModule: FilterModule()),
                                        Profile(name: "Controle-BAG Taxateur", filterModule: FilterModule()),
                                        Profile(name: "Markt onderzoeker", filterModule: FilterModule()),
                                        Profile(name: "Bag bekijker", filterModule: FilterModule())]
-        //var emptyStringArray : [String] = []
-
+    var defaulfProfile : Profile?
 }

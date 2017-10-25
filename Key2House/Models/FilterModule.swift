@@ -36,8 +36,6 @@ class Module : NSObject{
             }
         }
     }
-    
-    
 }
 
 class FilterModule: NSObject {

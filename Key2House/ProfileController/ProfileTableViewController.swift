@@ -65,12 +65,12 @@ class ProfileTableViewController: UITableViewController {
         
         if let sourceViewController = sender.source as? ProfileConfigurationViewController, let profile = sourceViewController.profile {
                 if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    // Update an existing meal.
+                    
                     manager.allProfiles[selectedIndexPath.row] = profile
                     tableView.reloadRows(at: [selectedIndexPath], with: .none)
                 }
                 else {
-                    // Add a new meal.
+
                     let newIndexPath = IndexPath(row: manager.allProfiles.count, section: 0)
                     
                     //profiles.append(profile)
