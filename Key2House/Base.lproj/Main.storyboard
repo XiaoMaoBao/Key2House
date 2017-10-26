@@ -200,6 +200,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="CameraScene" id="nug-nm-cQZ"/>
                     <connections>
+                        <outlet property="arCameraBtn" destination="9pK-FV-46s" id="PCw-CC-HFn"/>
                         <outlet property="mapOverView" destination="3eu-Cr-OEn" id="Wia-KE-xgV"/>
                         <outlet property="titleNameLabel" destination="qjY-1D-LpU" id="Uka-uc-7yZ"/>
                     </connections>
@@ -413,6 +414,6 @@
         <image name="Vergunnig" width="350" height="472"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MLk-P5-Cl3"/>
+        <segue reference="SAj-z2-be1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,7 +30,10 @@ class DeelObjectModel: NSObject {
     var constructionYear : Date?
    
     var id : String?
+    var bagwozID : String?
     
+    
+    var checkDate : Date?
     var insertDate : Date?
     var descriptionObject: String?
    

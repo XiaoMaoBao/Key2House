@@ -11,11 +11,11 @@ import MapKit
 import os.log
 class CameraSceneViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
    
+    @IBOutlet weak var arCameraBtn: UIButton!
     @IBOutlet weak var titleNameLabel: UILabel!
     @IBOutlet weak var mapOverView: MKMapView!
     let locationManager :  CLLocationManager = CLLocationManager()
 
-    var manager = ManagerSingleton.shared
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,13 +53,14 @@ class CameraSceneViewController: UIViewController, MKMapViewDelegate, CLLocation
    
     
     override func viewDidAppear(_ animated: Bool) {
-        let profile = manager.defaulfProfile
+        let profile = ManagerSingleton.shared.defaulfProfile
         
         guard let p = profile else {
             self.titleNameLabel.text = "No profile"
+            self.arCameraBtn.isEnabled = false
             return
         }
-        
+         self.arCameraBtn.isEnabled = true
             self.titleNameLabel.text = profile?.name!
     }
     

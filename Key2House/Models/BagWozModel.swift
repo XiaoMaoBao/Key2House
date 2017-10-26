@@ -9,6 +9,15 @@
 import UIKit
 import CoreLocation
 
+
+//type building
+public enum Building{
+    case appartment(elevator : Bool)
+    case residence(w : Double, h : Double, d : Double)
+    case unknown(String)
+}
+
+
 class BagWozModel: NSObject {
     
     private var nr : Int
@@ -34,13 +43,6 @@ class BagWozModel: NSObject {
     }
     
     
-    
-    //type building
-    public enum Building{
-        case appartment(elevator : Bool)
-        case residence(w : Double, h : Double, d : Double)
-        case unkown(String)
-    }
     
 
     func perceelSize() -> Double {

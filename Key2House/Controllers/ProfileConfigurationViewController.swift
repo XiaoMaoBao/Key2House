@@ -35,7 +35,14 @@ class ProfileConfigurationViewController: UIViewController, UITableViewDelegate,
         if let p = self.profile{
             self.title = p.name
             self.nameTextField.text = p.name
-            self.defaultProfileSwitch.setOn(p.defaultProfile, animated: true)
+            
+            
+            
+            if let dp = ManagerSingleton.shared.defaulfProfile{
+                if (dp === self.profile){
+                    self.defaultProfileSwitch.setOn(p.defaultProfile, animated: true)
+                }
+            }
         }else{
             self.profile = Profile(name: "", filterModule: FilterModule())
             self.nameTextField.text = ""

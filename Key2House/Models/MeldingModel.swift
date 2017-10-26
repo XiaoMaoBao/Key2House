@@ -16,6 +16,7 @@ enum Status{
     case done
 }
 
+
 protocol MessageInterface
 {
     var status : Status{set get}

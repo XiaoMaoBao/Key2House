@@ -29,6 +29,7 @@
 		11DC31C71F7E9CCF00BDB5F4 /* DeelObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */; };
 		11DC31C91F7E9CEA00BDB5F4 /* FilterModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */; };
 		11EC028A1F9F6BDA0080C174 /* MeldingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC02891F9F6BDA0080C174 /* MeldingModel.swift */; };
+		11EC028C1FA141CD0080C174 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC028B1FA141CD0080C174 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeelObjectModel.swift; sourceTree = "<group>"; };
 		11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModule.swift; sourceTree = "<group>"; };
 		11EC02891F9F6BDA0080C174 /* MeldingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeldingModel.swift; sourceTree = "<group>"; };
+		11EC028B1FA141CD0080C174 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				11EC02891F9F6BDA0080C174 /* MeldingModel.swift */,
 				11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */,
 				1198E7441F9E133900CF6D2F /* BagWozModel.swift */,
+				11EC028B1FA141CD0080C174 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				11EC028A1F9F6BDA0080C174 /* MeldingModel.swift in Sources */,
 				11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */,
 				1138EF7C1F9CC94E007EFA96 /* ManagerSingleton.swift in Sources */,
+				11EC028C1FA141CD0080C174 /* DataManager.swift in Sources */,
 				114DD1FE1F94DB2400C2347A /* ProfileModel.swift in Sources */,
 				11DC31C71F7E9CCF00BDB5F4 /* DeelObjectModel.swift in Sources */,
 				11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */,

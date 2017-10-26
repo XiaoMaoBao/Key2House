@@ -10,41 +10,99 @@ import UIKit
 
 
 
-enum functions{
-    case binryNumbers((Double, Double) -> Bool)
+enum Functions{
+    case controleModel((Date, Date) -> Bool)
+    case vergunningBezwaarCheck((Status) -> Bool)
+    case bagwozKoppeling((Building) -> Bool)
 }
 
 class Module : NSObject{
     var active : Bool?
     var title: String?
     var icon : UIImage?
-    var function : functions?
+    var function : Functions?
     
-    init(f :functions, icon: UIImage, title: String, active : Bool) {
+    init(f :Functions, icon: UIImage, title: String, active : Bool) {
         self.function = f
         self.icon = icon
         self.title = title
         self.active = active
     }
     
-    func useFunction(d : Double){
+    func  doSomething(f : Functions){
+        let v = 
+        
+    }
+   
+    
+   /*
+    func useFunction(objectCheck : BagWozModel, deelobject : DeelObjectModel) -> Bool{
         if let f = function{
             switch f {
-            case .binryNumbers(let functie):
-               let b =  functie(d,d)
-                print(b)
+            case .controleModel(let functie):
+                return functie(objectCheck.latestCheck!, deelobject.checkDate!)
+                
+            case .vergunningBezwaarCheck(let functie):
+                return functie(objectCheck.)
+                
+            case .bagwozKoppeling(let functie):
+                return functie(objectCheck.building)
             }
         }
-    }
+    }*/
+    
 }
 
 class FilterModule: NSObject {
-    func equalCheck(first : Double, second : Double)-> Bool{
-        return  first == second
-    }
+    func controle_Behoefte_func(bagwozCheck : Date, deelobjectCheck : Date?) -> Bool{
+        guard deelobjectCheck != nil else {
+            return true
+        }
 
-    var currentFilters : [Module] = []
+        let yearsToAdd = 5
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = yearsToAdd
+        
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: bagwozCheck)
+        
+        if(futureDate! < bagwozCheck){
+            return true
+        }
+        return false
+    }
     
+    
+    
+    func vergunningenBezwaar_func(status : Status) -> Bool{
+        switch status {
+        case .In_progress:
+            return true
+        case .done, .rated, .registrated, .taxed :
+            return false
+        }
+    }
+    
+    
+    
+    func koppelingBagWoz_func(building : Building, deelobjecten : [DeelObjectModel]) -> Bool{
+        
+        switch building {
+        case .unknown(_):
+            return true
+        case .appartment(_):
+            break
+        case .residence(_):
+            break
+        }
+        if (deelobjecten.count == 0){
+            return true
+        }
+        return false
+    }
+    
+    
+    var currentFilters : [Module] = []
     
     override init() {
         super.init()
@@ -52,12 +110,12 @@ class FilterModule: NSObject {
     }
     
     func setupTaxateur(){
-        let m = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Controle_Behoefte")!, title: "Controle behoefte", active: true)
-        let m1 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "BagWoz")!, title: "BagWoz koppeling", active: true)
-        let m2 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Vergunnig")!, title: "Vergunning", active: true)
-        let m3 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Bezwaar")!, title: "Bezwaarschriften", active: true)
+        //let m = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Controle_Behoefte")!, title: "Controle behoefte", active: true)
+        //let m1 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "BagWoz")!, title: "BagWoz koppeling", active: true)
+        //let m2 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Vergunnig")!, title: "Vergunning", active: true)
+        //let m3 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Bezwaar")!, title: "Bezwaarschriften", active: true)
 
-        currentFilters += [m, m1, m2, m3]
+        //currentFilters = [m, m1, m2, m3]
     }
 }
 

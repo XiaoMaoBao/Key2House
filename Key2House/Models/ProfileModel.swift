@@ -19,7 +19,9 @@ class Profile{
     var filterModule : FilterModule?
     var defaultProfile : Bool = false{
         willSet{
-            changeDefaultProfile(value: newValue)
+            if (newValue){
+                ManagerSingleton.shared.defaulfProfile = self
+            }
         }
     }
     
@@ -37,21 +39,7 @@ class Profile{
     }
     
     
-    private func changeDefaultProfile(value : Bool){
-        let tempProfiles = ManagerSingleton.shared.allProfiles
-        if(value == true){
-            for p in tempProfiles{
-                if p.defaultProfile == true{
-                    p.defaultProfile = false
-                    return
-                }
-            }
-        }
-        
-        ManagerSingleton.shared.allProfiles = tempProfiles
-        ManagerSingleton.shared.defaulfProfile = self
-        
-    }
+  
 }
 
 
