@@ -13,7 +13,7 @@ import UIKit
 enum Functions{
     case controleModel((Date, Date) -> Bool)
     case vergunningBezwaarCheck((Status) -> Bool)
-    case bagwozKoppeling((Building) -> Bool)
+    case bagwozKoppeling((Building, [DeelObjectModel]) -> Bool)
 }
 
 class Module : NSObject{
@@ -28,28 +28,23 @@ class Module : NSObject{
         self.title = title
         self.active = active
     }
-    
-    func  doSomething(f : Functions){
-        let v = 
-        
-    }
    
     
-   /*
-    func useFunction(objectCheck : BagWozModel, deelobject : DeelObjectModel) -> Bool{
+    func useFunction(objectCheck : BagWozModel, deelobject : DeelObjectModel, message : MessageInterface) -> Bool{
         if let f = function{
             switch f {
             case .controleModel(let functie):
                 return functie(objectCheck.latestCheck!, deelobject.checkDate!)
                 
             case .vergunningBezwaarCheck(let functie):
-                return functie(objectCheck.)
+                return functie(message.status)
                 
             case .bagwozKoppeling(let functie):
-                return functie(objectCheck.building)
+                return functie(objectCheck.building, objectCheck.deelobjecten)
             }
         }
-    }*/
+        return false
+    }
     
 }
 
@@ -71,8 +66,6 @@ class FilterModule: NSObject {
         }
         return false
     }
-    
-    
     
     func vergunningenBezwaar_func(status : Status) -> Bool{
         switch status {
@@ -110,10 +103,13 @@ class FilterModule: NSObject {
     }
     
     func setupTaxateur(){
-        //let m = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Controle_Behoefte")!, title: "Controle behoefte", active: true)
-        //let m1 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "BagWoz")!, title: "BagWoz koppeling", active: true)
-        //let m2 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Vergunnig")!, title: "Vergunning", active: true)
-        //let m3 = Module(f: .binryNumbers(equalCheck), icon: UIImage.init(named: "Bezwaar")!, title: "Bezwaarschriften", active: true)
+        
+        
+        
+        let m = Module(f: .controleModel(controle_Behoefte_func), icon: UIImage.init(named: "Controle_Behoefte")!, title: "Controle behoefte", active: true)
+        let m1 = Module(f: .bagwozKoppeling(koppelingBagWoz_func), icon: UIImage.init(named: "BagWoz")!, title: "BagWoz koppeling", active: true)
+        let m2 = Module(f: .vergunningBezwaarCheck(vergunningenBezwaar_func), icon: UIImage.init(named: "Vergunnig")!, title: "Vergunning", active: true)
+        let m3 = Module(f: .vergunningBezwaarCheck(vergunningenBezwaar_func), icon: UIImage.init(named: "Bezwaar")!, title: "Bezwaarschriften", active: true)
 
         //currentFilters = [m, m1, m2, m3]
     }

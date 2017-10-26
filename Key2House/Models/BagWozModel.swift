@@ -27,11 +27,12 @@ class BagWozModel: NSObject {
     private var pcCode : String
     private var geolocation : CLLocation?
     
-    var building : Building = Building.unkown("Error")
+    var building : Building = Building.unknown("Error")
     var deelobjecten : [DeelObjectModel] = []
+    var problemNotification : [MessageInterface] = []
+    
     var id : String?
 
-    
     var locality : Int?
     var latestCheck: Date?
 
@@ -42,8 +43,6 @@ class BagWozModel: NSObject {
         }
     }
     
-    
-    
 
     func perceelSize() -> Double {
         switch self.building {
@@ -51,7 +50,7 @@ class BagWozModel: NSObject {
             return size.w * size.h * size.d
         case .appartment( _):
              return 0
-        case .unkown( _):
+        case .unknown( _):
              return 0
         }
     }

@@ -31,7 +31,6 @@ protocol MessageInterface
     
 }
 
-
 class ControleMessage : MessageInterface{
     
     private let deelobject : DeelObjectModel

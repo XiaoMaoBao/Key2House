@@ -10,4 +10,12 @@ import UIKit
 
 class DataManager: NSObject {
 
+    
+    
+    override init() {
+        super.init()
+        
+        
+        
+    }
 }
