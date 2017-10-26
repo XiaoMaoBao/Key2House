@@ -11,11 +11,25 @@ import UIKit
 class DataManager: NSObject {
 
     
-    
-    override init() {
-        super.init()
+    static func createMockData(){
         
+    }
+    
+    
+    private func createMessages(){
+        
+    }
+    
+    
+    private func createDeelobjecten(){
         
         
     }
+    
+    
+    
+    private func createBagWoz(){
+        
+    }
+
 }
