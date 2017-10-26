@@ -12,7 +12,7 @@ class DataManager: NSObject {
 
     
     static func createMockData(){
-        
+        print("hallo")
     }
     
     
