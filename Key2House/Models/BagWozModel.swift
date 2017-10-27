@@ -30,7 +30,7 @@ class BagWozModel: NSObject {
     var building : Building = Building.unknown("Error")
     var deelobjecten : [DeelObjectModel] = []
     var problemNotification : [MessageInterface] = []
-    
+
     var id : String?
 
     var locality : Int?
@@ -93,6 +93,8 @@ class BagWozModel: NSObject {
     
     
     func calculateGeoLocationFromAddress(_ address : String){
+     
+        
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             guard
@@ -105,6 +107,7 @@ class BagWozModel: NSObject {
                     return
             }
             self.geolocation = location
+            print("" + self.address.city + "\(self.address.nr)")
             print(location.coordinate.latitude)
             // Use your location
         }

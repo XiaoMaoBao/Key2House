@@ -13,7 +13,7 @@ import ARKit
 class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var sceneView: ARSCNView!
-
+    var data = [BagWozModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +28,9 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
 
         // Set the scene to the view
         sceneView.scene = scene
-    
+        
+        getData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,5 +131,40 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func getData(){
+        var objectsForSessie  = [BagWozModel]()
+        let dm = DataManager()
+        dm.createBagWoz()
+        let profile = ManagerSingleton.shared.defaulfProfile
+        
+        dm.getObjectsFromAddress(streetname: "Antwerpseweg")
+        let bagwozAntwerpseweg = dm.currentBulk
+        
+        
+        for object in bagwozAntwerpseweg{
+            var arrayVolgorde = [MessageInterface]()
+            let objectMessages = dm.getMessages(object: object)
+            if let filter  = profile?.filterModule{
+                for f in filter.currentFilters{
+                    if(f.active!){
+                       arrayVolgorde += f.useFunction(objectCheck: object, message: objectMessages)
+                    }
+                }
+                
+               
+                object.problemNotification = arrayVolgorde
+                
+            }
+             if(object.problemNotification.count > 0){
+                objectsForSessie.append(object)
+            }
+        }
+    }
+    
 
+    
+    
+    
 }
