@@ -11,9 +11,17 @@ import UIKit
 class DataManager: NSObject {
     
     var currentBulk : [BagWozModel] = []
-    
+    private var filtermodules : FilterModule
     var allBagWozObjects = [BagWozModel]()
     var allMessages = [MessageInterface]()
+    
+    
+     init(filtermodule : FilterModule){
+        self.filtermodules = filtermodule
+        super.init()
+        createBagWoz()
+    }
+    
     
      func createBagWoz(){
         let newBagWozobjects = [
@@ -26,12 +34,12 @@ class DataManager: NSObject {
         
         //deelobjecten
         let obj1 = newBagWozobjects[0]
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), checkDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject1", k: 0, o: 0, u: 0, d: 0, v: 0)))
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2010".toDateTime(), insertDate: Date(), tax: 9000.0, descriptionObject: "Grond", fraction: DeelObjectModel.Fraction.land(id: "deelobject2", k: 0, o: 0, u: 0, d: 0, v: 0)))
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Berging", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject3", k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject1", k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2010".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 9000.0, descriptionObject: "Grond", fraction: DeelObjectModel.Fraction.land(id: "deelobject2", k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 0.0, descriptionObject: "Berging", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject3", k: 0, o: 0, u: 0, d: 0, v: 0)))
         
         let obj2 = newBagWozobjects[1]
-        obj2.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), checkDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject4", k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj2.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(id: "deelobject4", k: 0, o: 0, u: 0, d: 0, v: 0)))
         
         let newMessages = [
         PatentMessage(type: .PatentMessage(.In_progress()), insertDate: "01-01-2015".toDateTime(), objectId: "test1", messageId: "", image: #imageLiteral(resourceName: "Vergunnig"), patentType: ""),
@@ -44,17 +52,38 @@ class DataManager: NSObject {
      
     }
     
-    
-    
-    func getObjectsFromAddress(streetname : String){
-        self.currentBulk = self.allBagWozObjects.filter({$0.address.streetname == streetname})
-        //connect meldingen
-        
+
+   private func getObjectsFromAddress(streetname : String) -> [BagWozModel]{
+        return self.allBagWozObjects.filter({$0.address.streetname == streetname})
     }
     
-    func getMessages(object : BagWozModel) ->[MessageInterface]{
+   private func getMessages(object : BagWozModel) ->[MessageInterface]{
         return self.allMessages.filter({$0.objectId == object.id})
     }
+    
+    func requestData(streetname : String) -> [BagWozModel]{
+    let bagwozAntwerpseweg = self.getObjectsFromAddress(streetname: streetname)
+    var objectsForSessie  = [BagWozModel]()
+
+        
+        for object in bagwozAntwerpseweg{
+            var arrayMessages = [MessageInterface]()
+            let objectMessages = self.getMessages(object: object)
+                for filterFunction in self.filtermodules.currentFilters{
+                    if(filterFunction.active!){
+                        arrayMessages += filterFunction.useFunction(object: object, message: objectMessages)
+                    }
+                
+                object.problemNotification = arrayMessages
+            }
+            if(object.problemNotification.count > 0){
+                objectsForSessie.append(object)
+            }
+        }
+        return objectsForSessie
+    }
+    
+    
     
     
 }

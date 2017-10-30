@@ -29,9 +29,9 @@ class DeelObjectModel: NSObject {
     
     var constructionYear : Date?
    
-  //var id : String?
+    var id : String?
     var bagwozID : String?
-    var checkDate : Date?
+    var lastCheckDate : Date?
     var insertDate : Date?
     var descriptionObject: String?
    
@@ -53,7 +53,7 @@ class DeelObjectModel: NSObject {
         }
     }
     
-    init(size : (Double, Double, Double), constructionYr : Date, insertDate : Date, checkDate : Date? = nil, tax : Double, descriptionObject : String, fraction : Fraction) {
+    init(size : (Double, Double, Double), constructionYr : Date, insertDate : Date, lastCheckDate : Date? = nil, tax : Double, descriptionObject : String, fraction : Fraction) {
         self.size.width = size.0
         self.size.width = size.1
         self.size.width = size.2
@@ -61,7 +61,7 @@ class DeelObjectModel: NSObject {
         self.constructionYear = constructionYr
         self.insertDate = insertDate
         self.tax = tax
-        self.checkDate = checkDate
+        self.lastCheckDate = lastCheckDate
         self.descriptionObject = descriptionObject
         self.fraction = fraction
     }

@@ -14,10 +14,13 @@
 		1138EF801F9DF3A9007EFA96 /* ARCameraSessieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EF7F1F9DF3A9007EFA96 /* ARCameraSessieViewController.swift */; };
 		114B4BAF1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */; };
 		114DD1FE1F94DB2400C2347A /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114DD1FD1F94DB2400C2347A /* ProfileModel.swift */; };
+		1163DEEE1FA71ACF0087FA19 /* GeoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1163DEED1FA71ACF0087FA19 /* GeoManager.swift */; };
 		11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */; };
 		1198E73F1F9E03F100CF6D2F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1198E73E1F9E03F100CF6D2F /* art.scnassets */; };
 		1198E7431F9E07FD00CF6D2F /* ARDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */; };
 		1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7441F9E133900CF6D2F /* BagWozModel.swift */; };
+		11C6F0ED1FA37B0D00CD0744 /* HouseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6F0EC1FA37B0D00CD0744 /* HouseObject.swift */; };
+		11C6F0F01FA37B2B00CD0744 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C6F0EF1FA37B2B00CD0744 /* UserObject.swift */; };
 		11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */; };
 		11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */; };
 		11DC31981F7E9C4900BDB5F4 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31971F7E9C4900BDB5F4 /* SecondViewController.swift */; };
@@ -57,10 +60,13 @@
 		1138EF7F1F9DF3A9007EFA96 /* ARCameraSessieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCameraSessieViewController.swift; sourceTree = "<group>"; };
 		114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurationViewController.swift; sourceTree = "<group>"; };
 		114DD1FD1F94DB2400C2347A /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		1163DEED1FA71ACF0087FA19 /* GeoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoManager.swift; sourceTree = "<group>"; };
 		11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltermoduleTableViewCell.swift; sourceTree = "<group>"; };
 		1198E73E1F9E03F100CF6D2F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARDetailViewController.swift; path = Controllers/ARDetailViewController.swift; sourceTree = "<group>"; };
+		1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDetailViewController.swift; sourceTree = "<group>"; };
 		1198E7441F9E133900CF6D2F /* BagWozModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagWozModel.swift; sourceTree = "<group>"; };
+		11C6F0EC1FA37B0D00CD0744 /* HouseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseObject.swift; sourceTree = "<group>"; };
+		11C6F0EF1FA37B2B00CD0744 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		11DC31901F7E9C4900BDB5F4 /* Key2House.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Key2House.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -116,9 +122,17 @@
 		114DD2051F94E67D00C2347A /* ProfileController */ = {
 			isa = PBXGroup;
 			children = (
-				112691261F84E1E400246B19 /* ProfileTableViewController.swift */,
 			);
 			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		11C6F0EE1FA37B1400CD0744 /* ARSCene */ = {
+			isa = PBXGroup;
+			children = (
+				11C6F0EC1FA37B0D00CD0744 /* HouseObject.swift */,
+				11C6F0EF1FA37B2B00CD0744 /* UserObject.swift */,
+			);
+			path = ARSCene;
 			sourceTree = "<group>";
 		};
 		11DC31871F7E9C4900BDB5F4 = {
@@ -155,7 +169,6 @@
 				11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */,
 				112691281F84E1F400246B19 /* Support files */,
 				11DC31991F7E9C4900BDB5F4 /* Main.storyboard */,
-				1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */,
 				1138EF7B1F9CC94E007EFA96 /* ManagerSingleton.swift */,
 			);
 			path = Key2House;
@@ -182,12 +195,14 @@
 		11DC31C31F7E9C8100BDB5F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				11C6F0EE1FA37B1400CD0744 /* ARSCene */,
 				114DD1FD1F94DB2400C2347A /* ProfileModel.swift */,
 				11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */,
 				11EC02891F9F6BDA0080C174 /* MeldingModel.swift */,
 				11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */,
 				1198E7441F9E133900CF6D2F /* BagWozModel.swift */,
 				11EC028B1FA141CD0080C174 /* DataManager.swift */,
+				1163DEED1FA71ACF0087FA19 /* GeoManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,12 +210,14 @@
 		11DC31C41F7E9C8E00BDB5F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				112691261F84E1E400246B19 /* ProfileTableViewController.swift */,
 				112691291F84E2C800246B19 /* ProfileTableViewCell.swift */,
 				11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */,
 				11DC31971F7E9C4900BDB5F4 /* SecondViewController.swift */,
 				114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */,
 				11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */,
 				1138EF7D1F9CCFBF007EFA96 /* CameraSceneViewController.swift */,
+				1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */,
 				1138EF7F1F9DF3A9007EFA96 /* ARCameraSessieViewController.swift */,
 			);
 			path = Controllers;
@@ -362,9 +379,12 @@
 				11DC31C71F7E9CCF00BDB5F4 /* DeelObjectModel.swift in Sources */,
 				11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */,
 				11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */,
+				1163DEEE1FA71ACF0087FA19 /* GeoManager.swift in Sources */,
 				1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */,
 				11DC31C91F7E9CEA00BDB5F4 /* FilterModule.swift in Sources */,
+				11C6F0F01FA37B2B00CD0744 /* UserObject.swift in Sources */,
 				1138EF801F9DF3A9007EFA96 /* ARCameraSessieViewController.swift in Sources */,
+				11C6F0ED1FA37B0D00CD0744 /* HouseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

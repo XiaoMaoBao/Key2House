@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-
 class Profile{
     enum authority{
         case readWriteDelete(Bool, Bool, Bool)
@@ -37,9 +35,6 @@ class Profile{
         self.filterModule = filterModule
         self.defaultProfile = defaultProfile
     }
-    
-    
-  
 }
 
 

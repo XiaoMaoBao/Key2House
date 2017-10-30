@@ -25,11 +25,11 @@ class BagWozModel: NSObject {
     private var city : String
     private var pcNr : Int
     private var pcCode : String
-    private var geolocation : CLLocation?
     
     var building : Building = Building.unknown("Error")
     var deelobjecten : [DeelObjectModel] = []
     var problemNotification : [MessageInterface] = []
+    private var geolocation : CLLocation?
 
     var id : String?
 
@@ -75,6 +75,9 @@ class BagWozModel: NSObject {
             }
             return (0.0 , 0.0)
         }
+        set{
+            self.geolocation = CLLocation(latitude: newValue.lat, longitude: newValue.lon)
+        }
     }
     
     init( _nr : Int , _streetname : String, _city : String, _pcNr : Int,  _pcCode : String, _building : Building, id : String, latestCheck : Date){
@@ -88,30 +91,10 @@ class BagWozModel: NSObject {
         self.latestCheck = latestCheck
         super.init()
         
-        self.calculateGeoLocationFromAddress(self.convertAddressToString())
     }
     
     
-    func calculateGeoLocationFromAddress(_ address : String){
-     
-        
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-            guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                
-                else {
-                    // handle no location found
-                    print("Error")
-                    return
-            }
-            self.geolocation = location
-            print("" + self.address.city + "\(self.address.nr)")
-            print(location.coordinate.latitude)
-            // Use your location
-        }
-    }
+  
     
     func convertAddressToString() -> String{
         //let address = "1 Infinite Loop, Cupertino, CA 95014"

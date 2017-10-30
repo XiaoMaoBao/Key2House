@@ -31,13 +31,13 @@ class Module : NSObject{
     }
    
     
-    func useFunction(objectCheck : BagWozModel, message : [MessageInterface]) -> [MessageInterface]{
+    func useFunction(object : BagWozModel, message : [MessageInterface]) -> [MessageInterface]{
         if let f = function{
             switch f {
             case .controleModel(let functie):
-                return functie(objectCheck)
+                return functie(object)
             case .bagwozCoupling(let functie):
-               return functie(objectCheck)
+               return functie(object)
             case .patentCheck(let functie):
               return functie(message)
             case .objectionCheck(let functie):
@@ -50,11 +50,11 @@ class Module : NSObject{
 
 class FilterModule: NSObject {
    
-    func controle_Behoefte_func(bagWoz : BagWozModel) -> [MessageInterface]{
+   private func controle_Behoefte_func(bagWoz : BagWozModel) -> [MessageInterface]{
         var newArrayMessage = [MessageInterface]()
 
         for object in bagWoz.deelobjecten{
-            if(object.checkDate == nil){
+            if(object.lastCheckDate == nil){
                 newArrayMessage.append(ControleMessage(deelobject: object, type: .ControleMessage(.registrated()), insertDate: Date(), objectId: "", messageId: "", image: #imageLiteral(resourceName: "Controle_Behoefte")))
             }
         }
@@ -62,7 +62,7 @@ class FilterModule: NSObject {
         return newArrayMessage
     }
     
-    func patent_func(messages : [MessageInterface]) -> [MessageInterface]{
+   private func patent_func(messages : [MessageInterface]) -> [MessageInterface]{
         var newArrayMessage = [MessageInterface]()
         
         for m in messages{
@@ -79,7 +79,7 @@ class FilterModule: NSObject {
     
     
     
-    func objection_func(messages : [MessageInterface]) -> [MessageInterface]{
+   private func objection_func(messages : [MessageInterface]) -> [MessageInterface]{
         var newArrayMessage = [MessageInterface]()
         
         for m in messages{
@@ -94,7 +94,7 @@ class FilterModule: NSObject {
         return newArrayMessage
     }
     
-    func couplingBagWoz_func(bagWoz : BagWozModel) -> [MessageInterface]{
+    private func couplingBagWoz_func(bagWoz : BagWozModel) -> [MessageInterface]{
         var newArrayMessage = [MessageInterface]()
         
         var bagError = false
@@ -123,7 +123,7 @@ class FilterModule: NSObject {
          setupTaxateur()
     }
     
-    func setupTaxateur(){
+    private func setupTaxateur(){
         
         
         

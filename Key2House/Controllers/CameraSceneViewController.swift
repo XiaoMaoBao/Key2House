@@ -50,7 +50,8 @@ class CameraSceneViewController: UIViewController, MKMapViewDelegate, CLLocation
       
         
     }
-   
+
+
     
     override func viewDidAppear(_ animated: Bool) {
         let profile = ManagerSingleton.shared.defaulfProfile

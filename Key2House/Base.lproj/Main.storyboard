@@ -259,8 +259,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotterdam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRJ-Qg-z7d">
-                                            <rect key="frame" x="120" y="15" width="81" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotterdam" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRJ-Qg-z7d">
+                                            <rect key="frame" x="8" y="15" width="304" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.27084285020828247" green="0.69061517715454102" blue="0.45969706773757935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,6 +276,7 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="39N-d8-lTO" id="5p4-uq-6go"/>
+                        <outlet property="userAddress" destination="YRJ-Qg-z7d" id="1oA-ot-9aR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isX-jE-3ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
