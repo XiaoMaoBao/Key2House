@@ -113,6 +113,12 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         if showFeaturePoints {
             debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         }
+        
+        //touch
+        let tapPressRecongnizer = UITapGestureRecognizer(target: self, action: #selector(tapPressed(_:)))
+        tapPressRecongnizer.numberOfTapsRequired = 2
+        self.addGestureRecognizer(tapPressRecongnizer)
+        
     }
     
     override public func layoutSubviews() {
@@ -135,6 +141,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         
         updateEstimatesTimer?.invalidate()
         updateEstimatesTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(SceneLocationView.updateLocationData), userInfo: nil, repeats: true)
+        
     }
     
     public func pause() {
@@ -187,6 +194,26 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     
     public func currentEulerAngles() -> SCNVector3? {
         return pointOfView?.eulerAngles
+    }
+    
+//me
+  
+    @objc func tapPressed(_ sender: UITapGestureRecognizer){
+        
+        let touchPoint = sender.location(in: self)
+        let hittest = self.hitTest(touchPoint, options: nil)
+        
+        if let node = hittest.first?.node{
+            
+            let m = ARViewController.currentSessieNodes.first(where: { (item) -> Bool in
+                print(item.name)
+                print(node.name)
+               return item.name == node.name
+            })
+             print(m)
+            
+            
+        }
     }
     
     ///Adds a scene location estimate based on current time, camera position and location from location manager

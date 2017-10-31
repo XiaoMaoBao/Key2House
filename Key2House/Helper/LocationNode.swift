@@ -17,6 +17,7 @@ open class LocationNode: SCNNode {
     ///Location can be changed and confirmed later by SceneLocationView.
     public var location: CLLocation!
     
+    
     ///Whether the location of the node has been confirmed.
     ///This is automatically set to true when you create a node using a location.
     ///Otherwise, this is false, and becomes true once the user moves 100m away from the node,
@@ -60,7 +61,6 @@ open class LocationAnnotationNode: LocationNode {
     ///Subnodes and adjustments should be applied to this subnode
     ///Required to allow scaling at the same time as having a 2D 'billboard' appearance
     public let annotationNode: SCNNode
-    
     ///Whether the node should be scaled relative to its distance from the camera
     ///Default value (false) scales it to visually appear at the same size no matter the distance
     ///Setting to true causes annotation nodes to scale like a regular node
@@ -68,10 +68,14 @@ open class LocationAnnotationNode: LocationNode {
     ///For landmarks in the distance, the default is correct
     public var scaleRelativeToDistance = false
     
-    public init(location: CLLocation?, image: UIImage) {
+    
+    public var bagwozModel : BagWozModel
+    
+    public init(location: CLLocation?, image: UIImage, bagwozModel : BagWozModel) {
+        self.bagwozModel = bagwozModel
         self.image = image
-        
-        let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
+        let plane = SCNBox(width: image.size.width / 100, height: image.size.height / 100, length: image.size.height / 100, chamferRadius: 0)
+        //let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         
@@ -80,6 +84,8 @@ open class LocationAnnotationNode: LocationNode {
         
         super.init(location: location)
         
+        self.name = bagwozModel.convertAddressToString()
+        annotationNode.name = bagwozModel.convertAddressToString()
         let billboardConstraint = SCNBillboardConstraint()
         billboardConstraint.freeAxes = SCNBillboardAxis.Y
         constraints = [billboardConstraint]

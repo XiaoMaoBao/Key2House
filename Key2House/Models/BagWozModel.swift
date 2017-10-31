@@ -18,7 +18,7 @@ public enum Building{
 }
 
 
-class BagWozModel: NSObject {
+public class BagWozModel: NSObject {
     
     private var nr : Int
     private var streetname : String
