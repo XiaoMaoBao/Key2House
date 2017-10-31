@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 import ARKit
-
+import CoreLocation
 class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet weak var sceneView: ARSCNView!
@@ -23,7 +23,7 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.geoManager = GeoLocationManager(delegateARSessie: self)
+      //  self.geoManager = GeoLocationManager(delegateARSessie: self)
         //self.progressVisblility(visable: true)
         self.view.addSubview(progressHUD)
         // Do any additional setup after loading the view.
@@ -40,6 +40,8 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
         
         InitDataManager()
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -79,11 +81,9 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
         else {
             fatalError("The view is not inside a navigation controller.")
         }
-
     }
     
-    
-    
+
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // Place content only for anchors found by plane detection.
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
@@ -177,9 +177,11 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
             
         case .limited(.excessiveMotion):
             message = "Tracking limited - Move the device more slowly."
+
             
         case .limited(.insufficientFeatures):
             message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
+
             
         case .limited(.initializing):
             self.doneLoadingAR = false
@@ -190,59 +192,95 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
     func hideLoadingScreen(){
         if(self.doneLoadingAR && self.doneLoadingData){
             self.progressHUD.removeFromSuperview()
-            createModelObjects()
+           // createModelObjects()
             self.doneLoadingData = false
-            
-            // The 3D cube geometry we want to draw
-            let boxGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
-            // The node that wraps the geometry so we can add it to the scene
-            boxGeometry.materials.first?.diffuse.contents = UIColor.red
-            let boxNode = SCNNode(geometry: boxGeometry)
-            // Position the box just in front of the camera
-            boxNode.position = SCNVector3Make(0, 0, -1)
-            
-            self.sceneView.scene.rootNode.addChildNode(boxNode)
-            
         }
     }
     
     
     
-    private func createModelObjects(){
+   /* private func createModelObjects(){
         let cubeGeo = SCNBox(width: 10, height: 10, length: 10, chamferRadius: 0)
         cubeGeo.materials.first?.diffuse.contents = UIColor.blue
         let node = SCNNode(geometry: cubeGeo)
         let ulocation = self.geoManager?.userLatAndLon
-        let ecefUser = latlonToxyz(_coord: ((ulocation?.lat)!, (ulocation?.lon)!))
+        
+        
+        
+        
+        //let ecefUser = latlonToxyz(_coord: ((ulocation?.lat)!, (ulocation?.lon)!))
         for object in self.data{
-            let olocation = object.latAndLon
-            let ecefObject = latlonToxyz(_coord: (olocation.lat, olocation.lon))
+           // let olocation = object.latAndLon
+            print(self.geoManager?.userGeoLocation?.coordinate)
 
-            var xyzARWorld = (x : ecefUser.x - ecefObject.x, y : ecefUser.y - ecefObject.y, z : ecefUser.z - ecefObject.z)
-            xyzARWorld.x = xyzARWorld.x.roundToDecimal(5)
-            xyzARWorld.y = xyzARWorld.y.roundToDecimal(5)
-            xyzARWorld.z = xyzARWorld.z.roundToDecimal(5)
+            print(object.geolocation?.coordinate)
+            
+            addSphere(from: (self.geoManager?.userGeoLocation)!, to: object.geolocation!)
+            //let bearing = self.geoManager?.userGeoLocation?.calculateBearing(to: (object.geolocation?.coordinate)!)
+            let bearing = bearingBetween(startLocation: (self.geoManager?.userGeoLocation)!, endLocation: (object.geolocation)!)
+            print(bearing)
+            //getTransformGiven(currentLocation: self.geoManager?.userGeoLocation)
+            //let distance = self.geoManager?.userGeoLocation?.distanct(to: object.geolocation!)
+            //let ecefObject = latlonToxyz(_coord: (olocation.lat, olocation.lon))
+           // let xyzARWorld = latlonToxyz(azimuth: (self.geoManager?.heading)!, radius: distance!, elevation: 1)
+          //  var xyzARWorld = (x : ecefUser.x - ecefObject.x, y : ecefUser.y - ecefObject.y, z : ecefUser.z - ecefObject.z)
+           // xyzARWorld.x = Double(round(10000*xyzARWorld.x)/10000)
+            //xyzARWorld.y = Double(round(10000*xyzARWorld.y)/10000)
+            //xyzARWorld.z = Double(round(10000*xyzARWorld.z)/10000)
+         
+            print(xyzARWorld.x)
+            print(xyzARWorld.y)
+            print(xyzARWorld.z)
 
-            node.worldPosition =  SCNVector3Make(Float( xyzARWorld.x),Float(xyzARWorld.y), Float(xyzARWorld.z))
-            print(node.worldPosition)
+            node.worldPosition = SCNVector3Make(xyzARWorld.x, xyzARWorld.y, xyzARWorld.z)
             self.sceneView.scene.rootNode.addChildNode(node)
             
+            
+         
+
         }
-        
-    }
+    }*/
+  
     
-    private func latlonToxyz(_coord : (lat : Double,  lon : Double)) -> (x: Double, y : Double, z: Double){
-      
-        let cosLat = cos(_coord.lat * Double.pi / 180)
-        let sinLat = sin(_coord.lat * Double.pi / 180)
-        let cosLon = cos(_coord.lon * Double.pi / 180)
-        let sinLon = sin(_coord.lon * Double.pi / 180)
+    /*private func addSphere(from toLocation : CLLocation, to destinationLocation : CLLocation) {
+        //let stepLocation = step.getLocation()
+        let translation = MatrixHelper.transformMatrix(for: matrix_identity_float4x4, originLocation: destinationLocation, location: toLocation)
+        let sphere = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+        //let position = SCNVector3.positionFromTransform(translation)
+        sphere.position = SCNVector3Make(position.x, position.y, -(position.z))
+
+        print(position)
+        print("end")
+
+        sceneView.scene.rootNode.addChildNode(sphere)
+        // The 3D cube geometry we want to draw
+        let boxGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        // The node that wraps the geometry so we can add it to the scene
+        boxGeometry.materials.first?.diffuse.contents = UIColor.red
+        let boxNode = SCNNode(geometry: boxGeometry)
+        // Position the box just in front of the camera
+        boxNode.position = SCNVector3Make(0.01, -0.0, -1)
         
-        let rad = 500.00
-        let x = rad * cosLat * cosLon
-        let y = rad * cosLat * sinLon
-        let z = rad * sinLat
-        return (x,y,z)
+        self.sceneView.scene.rootNode.addChildNode(boxNode)
+        print(boxNode.worldPosition)
+        
+        
+        let moveToOrbit = SCNAction.move(to: sphere.worldPosition, duration: 100)
+        
+        
+        
+        boxNode.runAction(moveToOrbit)
+    }
+    */
+
+    
+    
+    private func latlonToxyz(azimuth : Double, radius : Double, elevation : Double) -> GLKVector3{
+        let x : Double = radius * sin(elevation) * sin(azimuth)
+        let y : Double = radius * cos(elevation)
+        let z : Double = radius * sin(elevation) * cos(azimuth)
+        
+        return GLKVector3Make(Float(x), Float(y), Float(z))
     }
     
     
@@ -255,84 +293,74 @@ class ARCameraSessieViewController: UIViewController, ARSCNViewDelegate {
         self.geoManager?.calculateGeoLocationFromData()
     }
     
-
+    
+  
+ func bearingBetween(startLocation: CLLocation, endLocation: CLLocation) -> Float {
+        var azimuth: Float = 0
+        let lat1 = GLKMathDegreesToRadians(
+            Float(startLocation.coordinate.latitude)
+        )
+        let lon1 = GLKMathDegreesToRadians(
+            Float(startLocation.coordinate.longitude)
+        )
+        let lat2 = GLKMathDegreesToRadians(
+            Float(endLocation.coordinate.latitude)
+        )
+        let lon2 = GLKMathDegreesToRadians(
+            Float(endLocation.coordinate.longitude)
+        )
+        let dLon = lon2 - lon1
+        let y = sin(dLon) * cos(lat2)
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        let radiansBearing = atan2(y, x)
+        azimuth = GLKMathRadiansToDegrees(Float(radiansBearing))
+        if(azimuth < 0) { azimuth += 360 }
+        return azimuth
+    }
     
 }
 
 
 
 
-class ProgressHUD: UIVisualEffectView {
-    
-    var text: String? {
-        didSet {
-            label.text = text
-        }
-    }
-    
-    let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    let label: UILabel = UILabel()
-    let blurEffect = UIBlurEffect(style: .light)
-    let vibrancyView: UIVisualEffectView
-    
-    init(text: String) {
-        self.text = text
-        self.vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
-        super.init(effect: blurEffect)
-        self.setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.text = ""
-        self.vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
-        super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    func setup() {
-        contentView.addSubview(vibrancyView)
-        contentView.addSubview(activityIndictor)
-        contentView.addSubview(label)
-        activityIndictor.startAnimating()
-    }
-    
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        if let superview = self.superview {
-            
-            let width = superview.frame.size.width / 2.3
-            let height: CGFloat = 50.0
-            self.frame = CGRect(x: superview.frame.size.width / 2 - width / 2,
-                                y: superview.frame.height / 2 - height / 2,
-                                width: width,
-                                height: height)
-            vibrancyView.frame = self.bounds
-            
-            let activityIndicatorSize: CGFloat = 40
-            activityIndictor.frame = CGRect(x: 5,
-                                            y: height / 2 - activityIndicatorSize / 2,
-                                            width: activityIndicatorSize,
-                                            height: activityIndicatorSize)
-            
-            layer.cornerRadius = 8.0
-            layer.masksToBounds = true
-            label.text = text
-            label.textAlignment = NSTextAlignment.center
-            label.frame = CGRect(x: activityIndicatorSize + 5,
-                                 y: 0,
-                                 width: width - activityIndicatorSize - 15,
-                                 height: height)
-            label.textColor = UIColor.gray
-            label.font = UIFont.boldSystemFont(ofSize: 16)
-        }
-    }
-}
+
+/*
 
 extension Double {
     func roundToDecimal(_ fractionDigits: Int) -> Double {
         let multiplier = pow(10, Double(fractionDigits))
         return Darwin.round(self * multiplier) / multiplier
     }
+    
+    
+    func metersToLatitude() -> Double {
+        return self / (6373000.0)
+    }
+    
+    func metersToLongitude() -> Double {
+        return self / (5602900.0)
+    }
+    
+    func toRadians() -> Double {
+        return self * .pi / 180.0
+    }
+    
+    func toDegrees() -> Double {
+        return self * 180.0 / .pi
+    }
 }
+*/
+/*
+extension SCNVector3 {
+    func distance(to anotherVector: SCNVector3) -> Float {
+        return sqrt(pow(anotherVector.x - x, 2) + pow(anotherVector.z - z, 2))
+    }
+    
+    static func positionFromTransform(_ transform: matrix_float4x4) -> SCNVector3 {
+        return SCNVector3Make(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
+    }
+    
+}*/
+
+
 

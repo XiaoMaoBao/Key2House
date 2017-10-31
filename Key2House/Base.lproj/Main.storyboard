@@ -209,18 +209,14 @@
             </objects>
             <point key="canvasLocation" x="1798" y="1025"/>
         </scene>
-        <!--Camera Sessie View Controller-->
+        <!--View Controller-->
         <scene sceneID="Hbo-Ys-4UC">
             <objects>
-                <viewController id="WwS-bG-vES" customClass="ARCameraSessieViewController" customModule="Key2House" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WwS-bG-vES" customClass="ARViewController" customModule="Key2House" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kXu-KL-Q2d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="39N-d8-lTO">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </arscnView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-Zp-sOQ">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -274,10 +270,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="jRB-ln-co9"/>
                     </view>
-                    <connections>
-                        <outlet property="sceneView" destination="39N-d8-lTO" id="5p4-uq-6go"/>
-                        <outlet property="userAddress" destination="YRJ-Qg-z7d" id="1oA-ot-9aR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isX-jE-3ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
