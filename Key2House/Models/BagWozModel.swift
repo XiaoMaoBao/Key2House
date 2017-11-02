@@ -29,7 +29,7 @@ public class BagWozModel: NSObject {
     var building : Building = Building.unknown("Error")
     var deelobjecten : [DeelObjectModel] = []
     var problemNotification : [MessageInterface] = []
-     var geolocation : CLLocation?
+    var geolocation : CLLocation?
 
     var id : String?
 

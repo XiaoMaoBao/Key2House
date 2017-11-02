@@ -52,8 +52,8 @@ class DataManager: NSObject {
         
         
         let newMessages = [
-        PatentMessage(type: .PatentMessage(.In_progress()), insertDate: "01-01-2015".toDateTime(), objectId: "test1", messageId: "", image: #imageLiteral(resourceName: "Vergunnig"), patentType: ""),
-        PatentMessage(type: .PatentMessage(.done()), insertDate: "01-01-2015".toDateTime(), objectId: "test2", messageId: "", image: #imageLiteral(resourceName: "Vergunnig"), patentType: "")
+        PatentMessage(type: .PatentMessage(.In_progress()), insertDate: "01-01-2015".toDateTime(), objectId: "test1", messageId: "absc", image: #imageLiteral(resourceName: "Vergunnig"), patentType: ""),
+        PatentMessage(type: .PatentMessage(.done()), insertDate: "01-01-2015".toDateTime(), objectId: "test2", messageId: "klik", image: #imageLiteral(resourceName: "Vergunnig"), patentType: "")
 
         ]
         
@@ -71,7 +71,7 @@ class DataManager: NSObject {
         return self.allMessages.filter({$0.objectId == object.id})
     }
     
-    func requestData(streetname : String) -> [BagWozModel]{
+func requestData(streetname : String) -> [BagWozModel]{
     let bagwozAntwerpseweg = self.getObjectsFromAddress(streetname: streetname)
     var objectsForSessie  = [BagWozModel]()
 

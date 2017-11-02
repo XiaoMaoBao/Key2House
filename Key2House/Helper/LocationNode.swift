@@ -70,16 +70,23 @@ open class LocationAnnotationNode: LocationNode {
     
     
     public var bagwozModel : BagWozModel
-    
+    //test
     public init(location: CLLocation?, image: UIImage, bagwozModel : BagWozModel) {
         self.bagwozModel = bagwozModel
         self.image = image
-        let plane = SCNBox(width: image.size.width / 100, height: image.size.height / 100, length: image.size.height / 100, chamferRadius: 0)
-        //let plane = SCNPlane(width: image.size.width / 100, height: image.size.height / 100)
+        //let plane = SCNBox(width: image.size.width / 100, height: image.size.height / 100, length: image.size.height / 100, chamferRadius: 0)
+        let plane = SCNPlane(width: image.size.width / 50, height: image.size.height / 50)
+        let nr = SCNText(string: "\(bagwozModel.address.nr)", extrusionDepth: 0.0)
+        let nodeNr = SCNNode(geometry: nr)
+        nodeNr.position.y -= Float(image.size.height / 25)
+
+        
+        
         plane.firstMaterial!.diffuse.contents = image
         plane.firstMaterial!.lightingModel = .constant
         
         annotationNode = SCNNode()
+        annotationNode.addChildNode(nodeNr)
         annotationNode.geometry = plane
         
         super.init(location: location)

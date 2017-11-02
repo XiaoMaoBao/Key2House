@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -167,28 +168,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-Cr-OEn">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-Cr-OEn">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Naam " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjY-1D-LpU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjY-1D-LpU">
                                 <rect key="frame" x="9" y="90" width="295" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="UZQ-6B-DVj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.59346705675125122" blue="0.22851353883743286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pK-FV-46s">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pK-FV-46s">
                                 <rect key="frame" x="0.0" y="119" width="70" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="rPA-5z-m6a"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="ARCamera"/>
                                 <connections>
                                     <segue destination="WwS-bG-vES" kind="presentation" identifier="ARScene" id="AUR-yS-Qgd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ws-I2-gqx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ws-I2-gqx">
                                 <rect key="frame" x="261" y="119" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="gQt-6M-gbQ"/>
+                                </constraints>
                                 <state key="normal" image="LocationIndicator"/>
                                 <connections>
                                     <action selector="CenterMapView:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="cyo-vo-S88"/>
@@ -196,6 +202,22 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3eu-Cr-OEn" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="BVi-wZ-3iE"/>
+                            <constraint firstItem="9pK-FV-46s" firstAttribute="bottom" secondItem="8Ws-I2-gqx" secondAttribute="bottom" id="Bl9-sT-FL8"/>
+                            <constraint firstItem="qjY-1D-LpU" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="9" id="CIn-XY-xDc"/>
+                            <constraint firstAttribute="trailing" secondItem="3eu-Cr-OEn" secondAttribute="trailing" id="DPh-wD-Q8K"/>
+                            <constraint firstItem="3eu-Cr-OEn" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Gi8-3p-GFG"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="9pK-FV-46s" secondAttribute="bottom" constant="350" id="KDv-05-SYY"/>
+                            <constraint firstItem="qjY-1D-LpU" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="26" id="Mgg-Dl-fh2"/>
+                            <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="8Ws-I2-gqx" secondAttribute="trailing" constant="9" id="Mpu-RW-AuU"/>
+                            <constraint firstItem="qjY-1D-LpU" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="Qn3-CW-saF"/>
+                            <constraint firstItem="8Ws-I2-gqx" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="55" id="SmJ-ov-W0v"/>
+                            <constraint firstItem="3eu-Cr-OEn" firstAttribute="leading" secondItem="9pK-FV-46s" secondAttribute="leading" id="YkW-JP-Yxe"/>
+                            <constraint firstItem="9pK-FV-46s" firstAttribute="top" secondItem="8Ws-I2-gqx" secondAttribute="top" id="dvE-Ij-tvD"/>
+                            <constraint firstItem="3eu-Cr-OEn" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="oxP-bT-7It"/>
+                            <constraint firstItem="9pK-FV-46s" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="55" id="qAw-6N-iqS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" title="CameraScene" id="nug-nm-cQZ"/>
@@ -356,6 +378,6 @@
         <image name="Vergunnig" width="350" height="472"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SAj-z2-be1"/>
+        <segue reference="MLk-P5-Cl3"/>
     </inferredMetricsTieBreakers>
 </document>

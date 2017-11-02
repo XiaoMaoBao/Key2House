@@ -34,15 +34,12 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-    
-
     }
     
     
     func calculateGeoLocationFromData(){
         if let dataSet = self.delegateARSessie?.data{
             for object in dataSet{
-           
                 let geoCoder = CLGeocoder()
                 geoCoder.geocodeAddressString(object.convertAddressToString()) { (placemarks, error) in
                     guard
@@ -50,7 +47,6 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
                         let location = placemarks.first?.location
                         
                         else {
-                            // handle no location found
                             print("Error")
                             self.countDataObject = self.countDataObject + 1
                             return
@@ -67,9 +63,7 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
         }
     }
     
-    
-    
-    
+    /*
     var userLatAndLon : (lat : CLLocationDegrees, lon : CLLocationDegrees){
         get{
             if let coordinate = self.userGeoLocation?.coordinate{
@@ -81,7 +75,7 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
             self.userGeoLocation = CLLocation(latitude: newValue.lat, longitude: newValue.lon)
         }
     }
-    
+    */
  
    
     
@@ -93,20 +87,20 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
         
             (placemarks, error) in
             guard
-                let placemarks = placemarks,
-                let location = placemarks.first?.location
-                
+                let placemarks = placemarks
                 else {
                     // handle no location found
                     print("Error")
                     return
             }
             
-            let street = (placemarks.last?.thoroughfare)!
-            if(self.currentStreet != street){
-                self.currentStreet = street
-              //  self.delegateARSessie?.label.text = self.currentStreet
-             //   self.delegateARSessie?.InitDataManager(streetname: self.currentStreet)
+            if let street = placemarks.last?.thoroughfare{
+                if(self.currentStreet != street){
+                    self.currentStreet = street
+                    ARViewController.displayView?.setTitleGeographicalLabel(self.currentStreet)
+                  //  self.delegateARSessie?.geographicalLabel.text = self.currentStreet
+                    self.delegateARSessie?.InitDataManager(streetname: self.currentStreet)
+                }
             }
         })
     }

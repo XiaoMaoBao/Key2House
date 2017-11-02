@@ -197,7 +197,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     }
     
 //me
-  
+  //ss
     @objc func tapPressed(_ sender: UITapGestureRecognizer){
         
         let touchPoint = sender.location(in: self)
@@ -210,8 +210,8 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 print(node.name)
                return item.name == node.name
             })
-             print(m)
             
+            showHouseObjectInfo(model : (m?.bagwozModel)! )
             
         }
     }
@@ -527,4 +527,10 @@ extension SceneLocationView: LocationManagerDelegate {
     func locationManagerDidUpdateHeading(_ locationManager: LocationManager, heading: CLLocationDirection, accuracy: CLLocationAccuracy) {
         
     }
+    
+    func showHouseObjectInfo(model : BagWozModel){
+       ARViewController.displayView?.setDisplayState(displayState: .detailView(model: model))
+    }
+    
+    
 }

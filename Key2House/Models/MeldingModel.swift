@@ -72,6 +72,8 @@ class ControleMessage : MessageInterface{
     }
     
     
+    
+    
     init(deelobject : DeelObjectModel, type : TypeMessage, insertDate : Date, objectId : String, messageId : String, image : UIImage){
         self.type = type
         self.insertDate = insertDate
