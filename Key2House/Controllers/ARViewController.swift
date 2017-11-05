@@ -12,15 +12,27 @@ import ARKit
 
 class ARViewController: UIViewController {
     
-    static var displayView : ARDisplayView?
+    enum DisplayState{
+        case normal
+        case detailView(m : BagWozModel)
+        case focusview(m : BagWozModel)
+    }
+
+    
+    var displayView : ARDisplayView?
     var sceneLocationView = SceneLocationView()
     var data = [BagWozModel]()
     var geoManager : GeoLocationManager?
     private let progressHUD = ProgressHUD(text: "Loading data")
-    static public var currentSessieNodes = [LocationAnnotationNode]()
-    
+    var currentSessieNodes = [LocationAnnotationNode]()
+  
+    static var ARControllerDelegate:ARViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.displayView = ARDisplayView(controllerDelegate: self, superView: self.view)
+        ARViewController.ARControllerDelegate = self
+
         self.geoManager = GeoLocationManager(delegateARSessie: self)
         //InitDataManager(streetname: "Antwerpseweg")
 
@@ -30,8 +42,9 @@ class ARViewController: UIViewController {
        // InitDataManager(streetname:  "Burgemeester van Reenensingel")
         
         sceneLocationView.run()
-        ARViewController.displayView = ARDisplayView(superView: self.view, controllerDelegate: self)
-
+        self.setDisplayModeState(state: .normal)
+        //ARViewController.displayView = ARDisplayView(superView: self.view, controllerDelegate: self)
+        
     }
     
     func createArObject(){
@@ -44,16 +57,21 @@ class ARViewController: UIViewController {
             let annotationNode = LocationAnnotationNode(location: location, image: image, bagwozModel: object)
             annotationNode.scaleRelativeToDistance = true
             sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
-            ARViewController.currentSessieNodes.append(annotationNode)
-//            sceneLocationView.run()
-
+            currentSessieNodes.append(annotationNode)
         }
     }
+   /* public func sessieObjectsIsHidden(_ hidden : Bool){
+        if(hidden){
+            hideAllHouseObjects()
+        }else {
+            showAllHouseObjects()
+        }
+    }*/
     
     private func removeAllNodes(){
-        for object in ARViewController.currentSessieNodes{
+        for object in self.currentSessieNodes{
             self.sceneLocationView.removeLocationNode(locationNode: object)
-            ARViewController.currentSessieNodes.removeFirst()
+            self.currentSessieNodes.removeFirst()
         }
     }
     
@@ -68,6 +86,23 @@ class ARViewController: UIViewController {
     }
 
     
+    func setDisplayModeState(state : DisplayState){
+        self.displayView?.cleanDisplay()
+        
+        switch state {
+        case .detailView(let m):
+            self.displayView?.detailDisplayView(model : m)
+        case .focusview(let m):
+            self.displayView?.focusDisplayView(model: m)
+        case .normal:
+            self.displayView?.normalDisplayView()
+            print("normal")
+        }
+        
+        self.displayView?.drawDisplay(superView: self.view)
+    }
+    
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         sceneLocationView.frame = view.bounds
@@ -79,5 +114,22 @@ class ARViewController: UIViewController {
     }
 }
 
+
+extension ARViewController{
+   /* private func hideAllHouseObjects(){
+        let sessieNode = ARViewController.currentSessieNodes
+        for node in  sessieNode{
+            node.isHidden = true
+        }
+    }*/
+    
+   /*
+    private func showAllHouseObjects(){
+        let sessieNode = ARViewController.currentSessieNodes
+        for node in  sessieNode{
+            node.isHidden = false
+        }
+    }*/
+}
 
 

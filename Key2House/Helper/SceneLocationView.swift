@@ -197,22 +197,22 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     }
     
 //me
-  //ss
+
+    
     @objc func tapPressed(_ sender: UITapGestureRecognizer){
-        
+        let delegate = ARViewController.ARControllerDelegate
         let touchPoint = sender.location(in: self)
         let hittest = self.hitTest(touchPoint, options: nil)
         
         if let node = hittest.first?.node{
             
-            let m = ARViewController.currentSessieNodes.first(where: { (item) -> Bool in
+            let m = delegate?.currentSessieNodes.first(where: { (item) -> Bool in
                 print(item.name)
                 print(node.name)
                return item.name == node.name
             })
             
-            showHouseObjectInfo(model : (m?.bagwozModel)! )
-            
+            delegate?.setDisplayModeState(state: .detailView(m: (m?.bagwozModel)!))
         }
     }
     
@@ -527,10 +527,4 @@ extension SceneLocationView: LocationManagerDelegate {
     func locationManagerDidUpdateHeading(_ locationManager: LocationManager, heading: CLLocationDirection, accuracy: CLLocationAccuracy) {
         
     }
-    
-    func showHouseObjectInfo(model : BagWozModel){
-       ARViewController.displayView?.setDisplayState(displayState: .detailView(model: model))
-    }
-    
-    
 }

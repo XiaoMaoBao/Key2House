@@ -14,7 +14,7 @@ import CoreLocation
 public enum Building{
     case appartment(elevator : Bool)
     case residence(w : Double, h : Double, d : Double)
-    case unknown(String)
+    case unknown()
 }
 
 
@@ -26,14 +26,15 @@ public class BagWozModel: NSObject {
     private var pcNr : Int
     private var pcCode : String
     
-    var building : Building = Building.unknown("Error")
+    var building : Building = Building.unknown()
     var deelobjecten : [DeelObjectModel] = []
     var problemNotification : [MessageInterface] = []
     var geolocation : CLLocation?
 
     var id : String?
 
-    var locality : Int?
+//  var locality : Int?
+    
     var latestCheck: Date?
 
     
@@ -90,11 +91,8 @@ public class BagWozModel: NSObject {
         self.pcCode = _pcCode
         self.latestCheck = latestCheck
         super.init()
-        
     }
     
-    
-  
     
     func convertAddressToString() -> String{
         //let address = "1 Infinite Loop, Cupertino, CA 95014"
@@ -103,4 +101,8 @@ public class BagWozModel: NSObject {
     }
 }
 
+
+extension BagWozModel{
+    
+}
 

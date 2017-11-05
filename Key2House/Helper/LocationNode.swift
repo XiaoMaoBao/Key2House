@@ -77,6 +77,7 @@ open class LocationAnnotationNode: LocationNode {
         //let plane = SCNBox(width: image.size.width / 100, height: image.size.height / 100, length: image.size.height / 100, chamferRadius: 0)
         let plane = SCNPlane(width: image.size.width / 50, height: image.size.height / 50)
         let nr = SCNText(string: "\(bagwozModel.address.nr)", extrusionDepth: 0.0)
+        nr.firstMaterial?.diffuse.contents = UIColor.red
         let nodeNr = SCNNode(geometry: nr)
         nodeNr.position.y -= Float(image.size.height / 25)
 

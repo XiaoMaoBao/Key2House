@@ -12,7 +12,6 @@ class ARDetailView: UIView {
 
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var wozValueDtmLabel: UILabel!
     @IBOutlet weak var wozValueLabel: UILabel!
     
     @IBOutlet weak var checkDtmLabel: UILabel!

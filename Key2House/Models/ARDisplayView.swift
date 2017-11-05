@@ -11,19 +11,27 @@ import UIKit
 
 class ARDisplayView: NSObject {
     
+    private var currentDisplayView : [UIView]?
+    private let delegateArController : ARViewController
+    /*
     enum DisplayState{
         case normal
         case detailView(model : BagWozModel)
         case focusview(model : BagWozModel)
     }
-    
-    private let geographicalLabel = UILabel()
-    private let viewcontrollerDelegate : ARViewController
-    private var displayState : DisplayState?
-    private var currentElements : [UIView] = []
-    private let geographicalView : UIView
-    private let superView : UIView
+    */
+    let geographicalLabel = UILabel()
+    private let superViewFrame : CGRect
+    private let superViewBounds : CGRect
 
+    //private let viewcontrollerDelegate : ARViewController
+    //private var displayState : DisplayState?
+    //private var currentElements : [UIView] = []
+    private let geographicalView : UIView
+    //private let superView : UIView
+    //private var currentModel : BagWozModel?
+    
+    /*
     func setDisplayState(displayState : DisplayState){
        self.displayState = displayState
         
@@ -46,18 +54,17 @@ class ARDisplayView: NSObject {
             }
         }
     }
-    
+    */
     
 
-    init(superView : UIView, controllerDelegate : ARViewController) {
-        self.superView = superView
-        self.viewcontrollerDelegate = controllerDelegate
-        self.geographicalView = UIView(frame: CGRect(x: self.superView.frame.origin.x, y: self.superView.frame.origin.y, width: self.superView.bounds.width, height: CGFloat(50)))
+    init(controllerDelegate : ARViewController, superView : UIView) {
+        self.delegateArController = controllerDelegate
+        self.superViewFrame = superView.frame
+        self.superViewBounds = superView.bounds
+        self.geographicalView = UIView(frame: CGRect(x: superView.frame.origin.x, y: superView.frame.origin.y, width: superView.bounds.width, height: CGFloat(50)))
+        
         super.init()
         
-        self.setDisplayState(displayState: .normal)
-        
-      
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = geographicalView.bounds
@@ -71,14 +78,130 @@ class ARDisplayView: NSObject {
         geographicalView.addSubview(blurEffectView)
         geographicalView.addSubview(geographicalLabel)
         
-        self.superView.addSubview(geographicalView)
+    }
+    
+
+    func setCurrentLocationDisplay(location : String){
+        self.geographicalLabel.text = location
+    }
+    
+     func normalDisplayView(){
+      
+        let stopCircleBtn = UIButton()
+      
+        stopCircleBtn.frame = CGRect(x: geographicalView.frame.origin.x + 5, y: geographicalView.bounds.size.height + 12.5, width: CGFloat(50), height: CGFloat(50))
+        stopCircleBtn.layer.cornerRadius = 0.5 * stopCircleBtn.bounds.size.width
+        stopCircleBtn.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        stopCircleBtn.clipsToBounds = true
+        stopCircleBtn.titleLabel?.textColor = UIColor.white
+        stopCircleBtn.setTitle("X", for: .normal)
+        stopCircleBtn.addTarget(self, action: #selector(self.stopSession), for: .touchUpInside)
+        
+        self.currentDisplayView?.append(stopCircleBtn)
+   
     }
     
     
-    func setTitleGeographicalLabel(_ text : String){
-        self.geographicalLabel.text = text
+    func detailDisplayView(model : BagWozModel){
+        let width : CGFloat = self.superViewFrame.size.width - 50
+        let height : CGFloat = self.superViewFrame.size.height - geographicalView.frame.size.height - 100
+        
+        if let customView = Bundle.main.loadNibNamed("DetailView", owner: self, options: nil)?.first as? ARDetailView {
+            customView.cancelBtn.addTarget(self, action: #selector(stopDetailView), for: .touchUpInside)
+            
+            customView.frame = CGRect(x: CGFloat(25), y: self.geographicalView.frame.height + 10, width: width, height: height)
+            customView.layer.cornerRadius = 15.0
+            customView.layer.masksToBounds = true
+            
+            customView.addressLabel.text = "\(model.address.streetname)" + " " + "\(model.address.nr)"
+            
+            let controle = self.getobjectsText(model : model)
+            customView.wozValueLabel.text = "\(model.wozWaarde)"
+            let dtm  = model.latestCheck?.convertDateToString()
+            customView.wozValueDtmLabel.text = dtm
+            customView.checkDtmLabel.text = dtm
+            customView.deelobjectenLabel.text = controle
+            
+            let objections = self.getObjectionText(messages: model.problemNotification)
+            customView.objectionNrLabel.text = objections.nr
+            customView.objectionDtmLabel.text = objections.dtm
+            
+            
+            let bagwozCoupling = self.getCouplingText(messages: model.problemNotification)
+            customView.couplingLabel.text = bagwozCoupling
+            
+            let patent = self.getPatentText(messages: model.problemNotification)
+            customView.patentNrLabel.text = patent.nr
+            customView.patentDtmLabel.text = patent.insertdate
+            customView.patentTypeLabel.text = patent.type
+            
+            let h : CGFloat = 50
+            
+            let toolbar = UIView(frame: CGRect(x: 0, y: self.superViewFrame.height - h, width: self.superViewFrame.width, height: h))
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = geographicalView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            
+            toolbar.addSubview(blurEffectView)
+            let focusViewBtn = UIButton()
+            focusViewBtn.frame = CGRect(x: toolbar.bounds.origin.x, y: toolbar.bounds.origin.y, width: 50, height: 50)
+            focusViewBtn.layer.cornerRadius = 0.5 * focusViewBtn.bounds.size.width
+            focusViewBtn.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+            focusViewBtn.clipsToBounds = true
+            focusViewBtn.titleLabel?.textColor = UIColor.white
+            focusViewBtn.setTitle("F", for: .normal)
+            //focusViewBtn.addTarget(self, action: #selector(startFocusView), for: .touchUpInside)
+            
+            
+            toolbar.addSubview(focusViewBtn)
+            self.currentDisplayView?.append(toolbar)
+            self.currentDisplayView?.append(customView)
+        }
     }
     
+    func focusDisplayView(model : BagWozModel){
+
+        
+    }
+    
+    func cleanDisplay(){
+        if let view = self.currentDisplayView{
+            for uiElement in view{
+                uiElement.removeFromSuperview()
+                self.currentDisplayView?.remove(object: uiElement)
+            }
+        }
+    }
+ 
+    func drawDisplay(superView : UIView){
+        if let view = self.currentDisplayView{
+            for uiElement in view{
+               superView.addSubview(uiElement)
+            }
+        }
+    }
+    
+    @objc private func stopSession(){
+        let isPresentingInAddMealMode = self.delegateArController.presentingViewController is UITabBarController
+        
+        if isPresentingInAddMealMode {
+            self.delegateArController.dismiss(animated: true, completion: nil)
+        }
+        else {
+            fatalError("The view is not inside a navigation controller.")
+        }
+    }
+    
+    
+    @objc private func stopDetailView(){
+        self.delegateArController.setDisplayModeState(state: .normal)
+    }
+    
+    
+    /*
     private func normalDisplayViewState(){
         let stopCircleBtn = UIButton()
         stopCircleBtn.frame = CGRect(x: geographicalView.frame.origin.x + 5, y: geographicalView.bounds.size.height + 12.5, width: CGFloat(50), height: CGFloat(50))
@@ -101,9 +224,6 @@ class ARDisplayView: NSObject {
         
         
         
-        
-        
-        
         self.superView.addSubview(testCircleBtn)
         self.superView.addSubview(stopCircleBtn)
         self.currentElements.append(testCircleBtn)
@@ -111,7 +231,7 @@ class ARDisplayView: NSObject {
     }
     
     private func detailDisplayViewState(model : BagWozModel){
-
+        self.currentModel = model
         let width : CGFloat = self.superView.frame.size.width - 50
         let height : CGFloat = self.superView.frame.size.height - geographicalView.frame.size.height - 100
      
@@ -157,24 +277,43 @@ class ARDisplayView: NSObject {
             
             toolbar.addSubview(blurEffectView)
             let focusViewBtn = UIButton()
-            //focusViewBtn.frame = CGRect(x: geographicalView.frame.origin.x + 5, y: geographicalView.bounds.size.height + 12.5, width: CGFloat(50), height: CGFloat(50))
+            focusViewBtn.frame = CGRect(x: toolbar.bounds.origin.x, y: toolbar.bounds.origin.y, width: 50, height: 50)
             focusViewBtn.layer.cornerRadius = 0.5 * focusViewBtn.bounds.size.width
             focusViewBtn.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
             focusViewBtn.clipsToBounds = true
             focusViewBtn.titleLabel?.textColor = UIColor.white
             focusViewBtn.setTitle("F", for: .normal)
-            
+            focusViewBtn.addTarget(self, action: #selector(startFocusView), for: .touchUpInside)
             
             
             toolbar.addSubview(focusViewBtn)
             self.currentElements.append(toolbar)
             self.currentElements.append(customView)
+            
+            self.superView.addSubview(toolbar)
             self.superView.addSubview(customView)
         }
     }
     
     private func focusDisplayViewState(model : BagWozModel){
+        self.viewcontrollerDelegate.sessieObjectsIsHidden(true)
+        let focusModel = FocusView(delegate: self, model : model)
         
+        let stopCircleBtn = UIButton()
+        stopCircleBtn.frame = CGRect(x: geographicalView.frame.origin.x + 5, y: geographicalView.bounds.size.height + 12.5, width: CGFloat(50), height: CGFloat(50))
+        stopCircleBtn.layer.cornerRadius = 0.5 * stopCircleBtn.bounds.size.width
+        stopCircleBtn.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        stopCircleBtn.clipsToBounds = true
+        stopCircleBtn.titleLabel?.textColor = UIColor.white
+        stopCircleBtn.setTitle("X", for: .normal)
+        stopCircleBtn.addTarget(self, action: #selector(stopDetailView), for: .touchUpInside)
+        
+        let model = focusModel.focusRootnode
+//        model.position =  (self.viewcontrollerDelegate.sceneLocationView.pointOfView?.worldPosition)!
+        self.viewcontrollerDelegate.sceneLocationView.scene.rootNode.addChildNode(model)
+        self.currentElements.append(stopCircleBtn)
+        self.superView.addSubview(stopCircleBtn)
+        print(model.position)
     }
     
     private func cleanSuperView(){
@@ -183,32 +322,46 @@ class ARDisplayView: NSObject {
             self.currentElements.removeFirst()
         }
     }
-    
-    @objc private func stopSession(){
-        let isPresentingInAddMealMode = self.viewcontrollerDelegate.presentingViewController is UITabBarController
-        
-        if isPresentingInAddMealMode {
-            self.viewcontrollerDelegate.dismiss(animated: true, completion: nil)
-        }
-        else {
-            fatalError("The view is not inside a navigation controller.")
-        }
+   
+    @objc private func stopFocusView(){
+        setDisplayState(displayState: .normal)
+        self.viewcontrollerDelegate.sessieObjectsIsHidden(false)
+
+        //save?
     }
     
-    
+    @objc private func startFocusView(sender : AnyObject){
+        setDisplayState(displayState: .focusview(model: currentModel!))
+       // setDisplayState()
+    }
     
     @objc private func stopARSession(){
   
         self.viewcontrollerDelegate.InitDataManager(streetname: "Burgemeester van Reenensingel")
     }
     
-    @objc private func stopDetailView(){
-       setDisplayState(displayState: .normal)
-        
-    }
+   */
 }
 
 extension ARDisplayView{
+    private func UIelementsVisable(view : ARDetailView){
+       /* let elements = [view.addressLabel,
+                        view.checkDtmLabel,
+                        view.couplingLabel,
+                        view.deelobjectenLabel,
+                        view.objectionDtmLabel,
+                        view.objectionNrLabel,
+                        view.patentDtmLabel,
+                        view.patentNrLabel,
+                        view.patentTypeLabel,
+                        view.wozValueDtmLabel,
+                        view.wozValueLabel]
+        
+        elements.forEach{ $0?.isHidden = ($0?.text?.isEmpty)! ? true : false}
+ */
+    }
+    
+ 
     
     private func getObjectionText(messages : [MessageInterface]) -> (nr :  String, dtm : String){
         var objectNr  = ""

@@ -119,14 +119,14 @@ class PatentMessage : MessageInterface{
     }
     
     
-    init(type : TypeMessage, insertDate : Date, objectId : String, messageId : String, image : UIImage, patentType : String){
+    init(type : TypeMessage, insertDate : Date, objectId : String, messageId : String, image : UIImage, patentTitle : String){
         self.insertDate = insertDate
         self.messageId = messageId
         self.objectId = objectId
         self.messageImage = image
-        self.title = "Vergunningen"
+        self.title = patentTitle
         self.type = type
-        self.typePatent = patentType
+        self.typePatent = patentTitle
         
     }
 }

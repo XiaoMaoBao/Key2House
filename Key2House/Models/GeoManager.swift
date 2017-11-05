@@ -25,8 +25,9 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
     }
     
     private var delegateARSessie : ARViewController?
-     var userGeoLocation : CLLocation?
+    var userGeoLocation : CLLocation?
     private var currentStreet : String = ""
+    
     init(delegateARSessie : ARViewController){
         self.delegateARSessie = delegateARSessie
         super.init()
@@ -47,7 +48,7 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
                         let location = placemarks.first?.location
                         
                         else {
-                            print("Error")
+                            //print("Error")
                             self.countDataObject = self.countDataObject + 1
                             return
                     }
@@ -90,15 +91,15 @@ class GeoLocationManager: NSObject, CLLocationManagerDelegate{
                 let placemarks = placemarks
                 else {
                     // handle no location found
-                    print("Error")
+                    //print("Error")
                     return
             }
             
             if let street = placemarks.last?.thoroughfare{
                 if(self.currentStreet != street){
                     self.currentStreet = street
-                    ARViewController.displayView?.setTitleGeographicalLabel(self.currentStreet)
-                  //  self.delegateARSessie?.geographicalLabel.text = self.currentStreet
+                    //ARViewController.displayView?.setTitleGeographicalLabel(self.currentStreet)
+                    self.delegateARSessie?.displayView?.setCurrentLocationDisplay(location: self.currentStreet)
                     self.delegateARSessie?.InitDataManager(streetname: self.currentStreet)
                 }
             }

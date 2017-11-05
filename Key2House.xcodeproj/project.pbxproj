@@ -17,6 +17,7 @@
 		113931B71FA9C518009614B6 /* ARDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113931B61FA9C518009614B6 /* ARDisplayView.swift */; };
 		114B4BAF1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */; };
 		114DD1FE1F94DB2400C2347A /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114DD1FD1F94DB2400C2347A /* ProfileModel.swift */; };
+		115B2A5C1FAB6F72006E00C8 /* DeelobjectNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B2A5B1FAB6F72006E00C8 /* DeelobjectNode.swift */; };
 		1163DEEE1FA71ACF0087FA19 /* GeoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1163DEED1FA71ACF0087FA19 /* GeoManager.swift */; };
 		1163DEF41FA861960087FA19 /* MatrixHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1163DEF31FA861960087FA19 /* MatrixHelper.swift */; };
 		1163DEF81FA862FB0087FA19 /* LocationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1163DEF71FA862FB0087FA19 /* LocationConstants.swift */; };
@@ -34,7 +35,6 @@
 		1163DF151FA87F150087FA19 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1163DF141FA87F150087FA19 /* ProgressHUD.swift */; };
 		11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */; };
 		1198E73F1F9E03F100CF6D2F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1198E73E1F9E03F100CF6D2F /* art.scnassets */; };
-		1198E7431F9E07FD00CF6D2F /* ARDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */; };
 		1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1198E7441F9E133900CF6D2F /* BagWozModel.swift */; };
 		11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */; };
 		11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC31951F7E9C4900BDB5F4 /* FirstViewController.swift */; };
@@ -78,6 +78,7 @@
 		113931B61FA9C518009614B6 /* ARDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDisplayView.swift; sourceTree = "<group>"; };
 		114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurationViewController.swift; sourceTree = "<group>"; };
 		114DD1FD1F94DB2400C2347A /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		115B2A5B1FAB6F72006E00C8 /* DeelobjectNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeelobjectNode.swift; sourceTree = "<group>"; };
 		1163DEED1FA71ACF0087FA19 /* GeoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoManager.swift; sourceTree = "<group>"; };
 		1163DEF31FA861960087FA19 /* MatrixHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixHelper.swift; sourceTree = "<group>"; };
 		1163DEF71FA862FB0087FA19 /* LocationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConstants.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		1163DF141FA87F150087FA19 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltermoduleTableViewCell.swift; sourceTree = "<group>"; };
 		1198E73E1F9E03F100CF6D2F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDetailViewController.swift; sourceTree = "<group>"; };
 		1198E7441F9E133900CF6D2F /* BagWozModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagWozModel.swift; sourceTree = "<group>"; };
 		11DC31901F7E9C4900BDB5F4 /* Key2House.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Key2House.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11DC31931F7E9C4900BDB5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +256,7 @@
 				1163DEED1FA71ACF0087FA19 /* GeoManager.swift */,
 				113931B61FA9C518009614B6 /* ARDisplayView.swift */,
 				111189F61FAB57B000406FD2 /* FocusView.swift */,
+				115B2A5B1FAB6F72006E00C8 /* DeelobjectNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,7 +271,6 @@
 				114B4BAE1F87BA4F00CF20D9 /* ProfileConfigurationViewController.swift */,
 				11782CCE1F87D034004824FC /* FiltermoduleTableViewCell.swift */,
 				1138EF7D1F9CCFBF007EFA96 /* CameraSceneViewController.swift */,
-				1198E7421F9E07FD00CF6D2F /* ARDetailViewController.swift */,
 				1163DF121FA8771F0087FA19 /* ARViewController.swift */,
 			);
 			path = Controllers;
@@ -419,7 +419,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1198E7431F9E07FD00CF6D2F /* ARDetailViewController.swift in Sources */,
 				1163DF0F1FA876F50087FA19 /* SceneLocationView.swift in Sources */,
 				113931B71FA9C518009614B6 /* ARDisplayView.swift in Sources */,
 				1138EF7E1F9CCFBF007EFA96 /* CameraSceneViewController.swift in Sources */,
@@ -445,6 +444,7 @@
 				11DC31941F7E9C4900BDB5F4 /* AppDelegate.swift in Sources */,
 				11DC31961F7E9C4900BDB5F4 /* FirstViewController.swift in Sources */,
 				1163DEEE1FA71ACF0087FA19 /* GeoManager.swift in Sources */,
+				115B2A5C1FAB6F72006E00C8 /* DeelobjectNode.swift in Sources */,
 				1163DF0E1FA876F50087FA19 /* SceneLocationEstimate.swift in Sources */,
 				1198E7451F9E133900CF6D2F /* BagWozModel.swift in Sources */,
 				11DC31C91F7E9CEA00BDB5F4 /* FilterModule.swift in Sources */,

@@ -19,10 +19,10 @@ class DeelObjectModel: NSObject {
     }
     
     enum Fraction {
-        case mainResidence(id: String ,k : Int, o : Int, u : Int, d : Int,  v: Int)
-        case land(id: String, k : Int, o : Int, u : Int, d : Int,  v: Int)
-        case outerBuilding(id: String, k : Int, o : Int, u : Int, d : Int,  v: Int)
-        case other(id: String, k : Int, o : Int, u : Int, d : Int,  v: Int)
+        case mainResidence( k : Int, o : Int, u : Int, d : Int,  v: Int)
+        case land(k : Int, o : Int, u : Int, d : Int,  v: Int)
+        case outerBuilding( k : Int, o : Int, u : Int, d : Int,  v: Int)
+        case other( k : Int, o : Int, u : Int, d : Int,  v: Int)
     }
     
     private var fraction : Fraction
@@ -30,13 +30,12 @@ class DeelObjectModel: NSObject {
     var constructionYear : Date?
    
     var id : String?
-    var bagwozID : String?
+    //var bagwozID : String?
     var lastCheckDate : Date?
     var insertDate : Date?
     var descriptionObject: String?
-   
     var tax : Double = 0.0
-    var size = Size()
+    private var size = Size()
     
     var notes = [Notes]()
     var pictures : [UIImage] = []
@@ -53,6 +52,10 @@ class DeelObjectModel: NSObject {
         }
     }
     
+    func setSize(size : (Double, Double, Double)){
+        self.size = Size(width: size.0, height: size.1, depth: size.2)
+    }
+    
     init(size : (Double, Double, Double), constructionYr : Date, insertDate : Date, lastCheckDate : Date? = nil, tax : Double, descriptionObject : String, fraction : Fraction) {
         self.size.width = size.0
         self.size.width = size.1
@@ -66,20 +69,37 @@ class DeelObjectModel: NSObject {
         self.fraction = fraction
     }
     
-    func fractionDetails() -> (name : String, id : String, k: Int, o : Int, u : Int, d : Int, v : Int){
+    
+    func getHouseValues() -> (Int, Int, Int , Int, Int){
+        switch self.fraction {
+        case .land(let k , let o, let u, let d, let v):
+            return (k,o,u,d,v)
+        case .mainResidence(let k, let o, let u, let d, let v):
+            return (k,o,u,d,v)
+        case .outerBuilding(let k, let o, let u, let d, let v):
+            return (k,o,u,d,v)
+        case .other(let k, let o, let u, let d, let v):
+            return (k,o,u,d,v)
+        }
+    }
+    
+    func fractionDetails() -> (name : String, k: Int, o : Int, u : Int, d : Int, v : Int){
             switch self.fraction {
-            case .land(_):
-                return ("Grond", "0001" ,0,0,0,0,0)
-            case .mainResidence(_):
-                return ("Hoofdwoning", "0001" ,0,0,0,0,0)
-            case .other(_):
-                return ("Overige", "0001", 0,0,0,0,0)
-            case .outerBuilding(_):
-                return ("Bijgebouw", "0001" ,0,0,0,0,0)
+            case .land(let k, let o, let u, let d, let v):
+                return ("Grond", k, o, u, d, v)
+            case .mainResidence(let k, let o, let u, let d, let v):
+                return ("Hoofdwoning",k, o, u, d, v)
+            case .other(let k, let o, let u, let d, let v):
+                return ("Overige",k, o, u, d, v)
+            case .outerBuilding(let k, let o, let u, let d, let v):
+                return ("Bijgebouw",k, o, u, d, v)
             }
         }
 }
    
     
+
+extension DeelObjectModel{
     
+}
 

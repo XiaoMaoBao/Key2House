@@ -22,196 +22,203 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KC-QX-NrJ">
-                    <rect key="frame" x="13" y="21" width="44" height="44"/>
+                    <rect key="frame" x="13" y="21" width="44" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="9TZ-zw-2Oe"/>
                     </constraints>
                     <state key="normal" title="X"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Boe-UO-HRI">
-                    <rect key="frame" x="62" y="30" width="242" height="27"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adres" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Boe-UO-HRI">
+                    <rect key="frame" x="62" y="21" width="242" height="32.5"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="18"/>
                     <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waarde datum: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MM-cQ-ssL">
-                    <rect key="frame" x="19" y="88" width="93" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                    <color key="textColor" red="0.27058823529411763" green="0.69019607843137254" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="€330.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVw-yn-twx">
-                    <rect key="frame" x="123" y="106" width="166" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€330.000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVw-yn-twx">
+                    <rect key="frame" x="106.5" y="83.5" width="50.5" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schuur, Berging" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-PG-0wM">
-                    <rect key="frame" x="110" y="169" width="176" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schuur, Berging" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-PG-0wM">
+                    <rect key="frame" x="110" y="146.5" width="85.5" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01-01-2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-iq-VDi">
-                    <rect key="frame" x="117" y="234" width="172" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-01-2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-iq-VDi">
+                    <rect key="frame" x="117" y="211.5" width="61.5" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bouwvergunningen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgD-me-wib">
-                    <rect key="frame" x="65" y="346" width="224" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bouwvergunningen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgD-me-wib">
+                    <rect key="frame" x="62" y="324.5" width="103" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01-01-2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPy-c9-9Iy">
-                    <rect key="frame" x="166" y="152" width="123" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-01-2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPy-c9-9Iy">
+                    <rect key="frame" x="166" y="129.5" width="61.5" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Woz-waarde:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohn-Qa-bmR">
-                    <rect key="frame" x="19" y="105" width="93" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Woz-waarde:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohn-Qa-bmR">
+                    <rect key="frame" x="19" y="82.5" width="76.5" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Controle behoefte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkl-Se-waP">
-                    <rect key="frame" x="19" y="135" width="112" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Controle behoefte" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mkl-Se-waP">
+                    <rect key="frame" x="19" y="112.5" width="112" height="16"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bezwaarschrift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kj-CC-L0j">
-                    <rect key="frame" x="19" y="198" width="105" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bezwaarschrift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kj-CC-L0j">
+                    <rect key="frame" x="19" y="175.5" width="105" height="18"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bag_woz koppeling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I86-Xg-eXx">
-                    <rect key="frame" x="19" y="263" width="139" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bag_woz koppeling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I86-Xg-eXx">
+                    <rect key="frame" x="19" y="240.5" width="139" height="18"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Laatste controle datum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX9-8r-j6Q">
-                    <rect key="frame" x="19" y="152" width="136" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laatste controle datum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX9-8r-j6Q">
+                    <rect key="frame" x="19" y="129.5" width="136" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deelobjecten:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaB-DF-4ar">
-                    <rect key="frame" x="19" y="168" width="80" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deelobjecten:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaB-DF-4ar">
+                    <rect key="frame" x="19" y="145.5" width="80" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nr.abc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMz-In-Qsv">
-                    <rect key="frame" x="50" y="217" width="38" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nr.abc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMz-In-Qsv">
+                    <rect key="frame" x="47.5" y="194.5" width="38" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nr.BR2007" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IK-lk-Dqc">
-                    <rect key="frame" x="50" y="330" width="64" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nr.BR2007" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IK-lk-Dqc">
+                    <rect key="frame" x="47.5" y="307.5" width="64" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bag/Woz onbekend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-nv-idJ">
-                    <rect key="frame" x="19" y="282" width="105" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bag/Woz onbekend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vz-nv-idJ">
+                    <rect key="frame" x="19" y="259.5" width="105" height="14"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingangsdatum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c1-TA-MZR">
-                    <rect key="frame" x="19" y="233" width="87" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingangsdatum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c1-TA-MZR">
+                    <rect key="frame" x="19" y="210.5" width="87" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGE-xY-kb1">
-                    <rect key="frame" x="19" y="346" width="35" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGE-xY-kb1">
+                    <rect key="frame" x="19" y="324.5" width="32" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nr:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jca-Bl-kIc">
-                    <rect key="frame" x="19" y="330" width="20" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nr:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jca-Bl-kIc">
+                    <rect key="frame" x="19" y="307.5" width="17.5" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ingangsdatum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuC-30-5AS">
-                    <rect key="frame" x="19" y="363" width="87" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingangsdatum:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuC-30-5AS">
+                    <rect key="frame" x="19" y="341.5" width="87" height="15"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
+                    <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vergunning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37p-U6-m8W">
+                    <rect key="frame" x="19" y="288.5" width="81" height="18"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-02-2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uji-ae-ufl">
+                    <rect key="frame" x="117" y="341.5" width="61.5" height="14"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                    <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nr:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-dq-tfN">
+                    <rect key="frame" x="19" y="194.5" width="17.5" height="15"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                     <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meldingen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auT-Mf-ZJv">
-                    <rect key="frame" x="128" y="62" width="65" height="16"/>
+                    <rect key="frame" x="128" y="61.5" width="65" height="16"/>
                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vergunning" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37p-U6-m8W">
-                    <rect key="frame" x="19" y="311" width="81" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
-                    <color key="textColor" red="0.0" green="0.58939677479999997" blue="0.24655950069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="02-02-2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uji-ae-ufl">
-                    <rect key="frame" x="117" y="364" width="172" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="01-01-2010" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsh-JY-4AK">
-                    <rect key="frame" x="123" y="89" width="166" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
-                    <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nr:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-dq-tfN">
-                    <rect key="frame" x="19" y="217" width="20" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
-                    <color key="textColor" red="0.27058823529999998" green="0.69019607839999997" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.81012457609176636" green="0.86224520206451416" blue="0.90396308898925781" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="qaB-DF-4ar" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="0BA-An-0g4"/>
+                <constraint firstItem="qaB-DF-4ar" firstAttribute="top" secondItem="ZX9-8r-j6Q" secondAttribute="bottom" constant="1" id="0VN-Q4-XOe"/>
+                <constraint firstItem="PgD-me-wib" firstAttribute="leading" secondItem="OGE-xY-kb1" secondAttribute="trailing" constant="11" id="0zB-JF-nPv"/>
+                <constraint firstItem="OGE-xY-kb1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="3tE-US-fjN"/>
+                <constraint firstItem="HVw-yn-twx" firstAttribute="top" secondItem="auT-Mf-ZJv" secondAttribute="bottom" constant="6" id="6Q6-4N-vIB"/>
+                <constraint firstItem="37p-U6-m8W" firstAttribute="top" secondItem="8vz-nv-idJ" secondAttribute="bottom" constant="15" id="6c2-Ox-K8Q"/>
+                <constraint firstItem="I86-Xg-eXx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="6wg-k8-HMt"/>
+                <constraint firstItem="ZX9-8r-j6Q" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="75q-1N-GEf"/>
+                <constraint firstItem="HuC-30-5AS" firstAttribute="top" secondItem="OGE-xY-kb1" secondAttribute="bottom" constant="2" id="8tb-QY-qSu"/>
+                <constraint firstItem="0Kj-CC-L0j" firstAttribute="top" secondItem="qaB-DF-4ar" secondAttribute="bottom" constant="15" id="BJH-90-Rrg"/>
+                <constraint firstItem="ohn-Qa-bmR" firstAttribute="top" secondItem="Boe-UO-HRI" secondAttribute="bottom" constant="29" id="BXg-9r-MZv"/>
+                <constraint firstItem="fPy-c9-9Iy" firstAttribute="leading" secondItem="ZX9-8r-j6Q" secondAttribute="trailing" constant="11" id="EWT-hg-p6X"/>
+                <constraint firstItem="Wui-dq-tfN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="F4C-Sm-YIW"/>
+                <constraint firstItem="fPy-c9-9Iy" firstAttribute="top" secondItem="HVw-yn-twx" secondAttribute="bottom" constant="32" id="FWl-kj-LOI"/>
+                <constraint firstItem="HVw-yn-twx" firstAttribute="leading" secondItem="ohn-Qa-bmR" secondAttribute="trailing" constant="11" id="FyN-by-jRL"/>
                 <constraint firstItem="auT-Mf-ZJv" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="GMe-kA-wXX"/>
                 <constraint firstItem="0KC-QX-NrJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="1" id="HU2-nM-tnz"/>
-                <constraint firstItem="Boe-UO-HRI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="N6W-7h-qt1"/>
-                <constraint firstItem="auT-Mf-ZJv" firstAttribute="top" secondItem="Boe-UO-HRI" secondAttribute="bottom" constant="5" id="SpV-yT-WHg"/>
+                <constraint firstItem="ZX9-8r-j6Q" firstAttribute="top" secondItem="Mkl-Se-waP" secondAttribute="bottom" constant="1" id="Hpu-Jg-ywN"/>
+                <constraint firstItem="I86-Xg-eXx" firstAttribute="top" secondItem="3c1-TA-MZR" secondAttribute="bottom" constant="15" id="JtE-RC-DT7"/>
+                <constraint firstItem="jca-Bl-kIc" firstAttribute="top" secondItem="37p-U6-m8W" secondAttribute="bottom" constant="1" id="MLa-jd-qKh"/>
+                <constraint firstItem="ohn-Qa-bmR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="Muf-Ie-tcT"/>
+                <constraint firstItem="Boe-UO-HRI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="1" id="N6W-7h-qt1"/>
+                <constraint firstItem="3c1-TA-MZR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="Q85-ef-uuo"/>
+                <constraint firstItem="Mkl-Se-waP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="Qki-3U-lkU"/>
+                <constraint firstItem="GMz-In-Qsv" firstAttribute="top" secondItem="0Kj-CC-L0j" secondAttribute="bottom" constant="1" id="RQ2-km-4dm"/>
+                <constraint firstItem="PgD-me-wib" firstAttribute="top" secondItem="jca-Bl-kIc" secondAttribute="bottom" constant="2" id="SYo-Hr-c1y"/>
+                <constraint firstItem="auT-Mf-ZJv" firstAttribute="top" secondItem="Boe-UO-HRI" secondAttribute="bottom" constant="8" id="SpV-yT-WHg"/>
+                <constraint firstItem="GMz-In-Qsv" firstAttribute="leading" secondItem="Wui-dq-tfN" secondAttribute="trailing" constant="11" id="TXr-Ie-soU"/>
                 <constraint firstItem="Boe-UO-HRI" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="VNp-Kn-6FQ"/>
                 <constraint firstItem="0KC-QX-NrJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="13" id="XDL-E5-ubi"/>
-                <constraint firstItem="0KC-QX-NrJ" firstAttribute="centerY" secondItem="Boe-UO-HRI" secondAttribute="centerY" id="foh-wz-5Xa"/>
+                <constraint firstItem="lNO-iq-VDi" firstAttribute="leading" secondItem="3c1-TA-MZR" secondAttribute="trailing" constant="11" id="Y8d-K4-vw6"/>
+                <constraint firstItem="HuC-30-5AS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="bVU-38-Dc2"/>
+                <constraint firstItem="lNO-iq-VDi" firstAttribute="top" secondItem="GMz-In-Qsv" secondAttribute="bottom" constant="2" id="cXN-Vf-WWX"/>
+                <constraint firstItem="8vz-nv-idJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="dPy-Gg-dSM"/>
+                <constraint firstItem="3c1-TA-MZR" firstAttribute="top" secondItem="GMz-In-Qsv" secondAttribute="bottom" constant="1" id="fNw-WO-PbV"/>
+                <constraint firstItem="0KC-QX-NrJ" firstAttribute="centerY" secondItem="Boe-UO-HRI" secondAttribute="centerY" constant="-1.25" id="foh-wz-5Xa"/>
+                <constraint firstItem="jca-Bl-kIc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="gfy-jS-CCS"/>
+                <constraint firstItem="7IK-lk-Dqc" firstAttribute="leading" secondItem="jca-Bl-kIc" secondAttribute="trailing" constant="11" id="hsV-LV-ShU"/>
+                <constraint firstItem="Mkl-Se-waP" firstAttribute="top" secondItem="HVw-yn-twx" secondAttribute="bottom" constant="15" id="k3e-a6-4Bh"/>
+                <constraint firstItem="8vz-nv-idJ" firstAttribute="top" secondItem="I86-Xg-eXx" secondAttribute="bottom" constant="1" id="mzp-mj-J5l"/>
+                <constraint firstItem="uji-ae-ufl" firstAttribute="top" secondItem="OGE-xY-kb1" secondAttribute="bottom" constant="2" id="n7N-YW-uiL"/>
+                <constraint firstItem="0Kj-CC-L0j" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="oGr-qh-TSs"/>
+                <constraint firstItem="uvP-PG-0wM" firstAttribute="leading" secondItem="qaB-DF-4ar" secondAttribute="trailing" constant="11" id="oq5-lQ-0dS"/>
+                <constraint firstItem="uvP-PG-0wM" firstAttribute="top" secondItem="ZX9-8r-j6Q" secondAttribute="bottom" constant="2" id="qRl-Ww-vuD"/>
+                <constraint firstItem="7IK-lk-Dqc" firstAttribute="top" secondItem="37p-U6-m8W" secondAttribute="bottom" constant="1" id="rtP-4G-bXx"/>
                 <constraint firstItem="Boe-UO-HRI" firstAttribute="leading" secondItem="0KC-QX-NrJ" secondAttribute="trailing" constant="5" id="uaA-mM-Jug"/>
+                <constraint firstItem="uji-ae-ufl" firstAttribute="leading" secondItem="HuC-30-5AS" secondAttribute="trailing" constant="11" id="uer-r2-m2Q"/>
+                <constraint firstItem="Wui-dq-tfN" firstAttribute="top" secondItem="0Kj-CC-L0j" secondAttribute="bottom" constant="1" id="w43-Wy-1in"/>
+                <constraint firstItem="OGE-xY-kb1" firstAttribute="top" secondItem="jca-Bl-kIc" secondAttribute="bottom" constant="2" id="w4R-mA-dKg"/>
+                <constraint firstItem="37p-U6-m8W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="wnd-9k-Hmp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
@@ -225,7 +232,6 @@
                 <outlet property="patentDtmLabel" destination="uji-ae-ufl" id="o7c-QM-Awa"/>
                 <outlet property="patentNrLabel" destination="7IK-lk-Dqc" id="uwO-VW-1a2"/>
                 <outlet property="patentTypeLabel" destination="PgD-me-wib" id="yAQ-WJ-Pxg"/>
-                <outlet property="wozValueDtmLabel" destination="Qsh-JY-4AK" id="0Tl-qh-ebO"/>
                 <outlet property="wozValueLabel" destination="HVw-yn-twx" id="C5i-FS-jXe"/>
             </connections>
         </view>

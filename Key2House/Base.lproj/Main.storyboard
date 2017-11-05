@@ -246,31 +246,6 @@
             </objects>
             <point key="canvasLocation" x="2812.5" y="1024.6478873239437"/>
         </scene>
-        <!--Detail View Controller-->
-        <scene sceneID="zDf-dx-UT3">
-            <objects>
-                <viewController id="Nnj-9m-R2b" customClass="ARDetailViewController" customModule="Key2House" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SCK-XO-twY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jps-Ew-lCq">
-                                <rect key="frame" x="54" y="65" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="cancelDetailView:" destination="Nnj-9m-R2b" eventType="touchUpInside" id="rfq-47-BxT"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="P4i-IO-Zcd"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hAq-iA-v19" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3863" y="1025"/>
-        </scene>
         <!--Logboek-->
         <scene sceneID="WO1-po-sEU">
             <objects>

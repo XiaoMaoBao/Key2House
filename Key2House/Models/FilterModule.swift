@@ -125,8 +125,6 @@ class FilterModule: NSObject {
     
     private func setupTaxateur(){
         
-        
-        
         let m = Module(f: .controleModel(controle_Behoefte_func), icon: UIImage.init(named: "Controle_Behoefte")!, title: "Controle behoefte", active: true)
         let m1 = Module(f: .bagwozCoupling(couplingBagWoz_func), icon: UIImage.init(named: "BagWoz")!, title: "BagWoz koppeling", active: true)
         let m2 = Module(f: .patentCheck(patent_func), icon: UIImage.init(named: "Vergunnig")!, title: "Vergunning", active: true)
