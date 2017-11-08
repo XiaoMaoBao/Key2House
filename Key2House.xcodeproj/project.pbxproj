@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		111189F31FAB085B00406FD2 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 111189F21FAB085B00406FD2 /* DetailView.xib */; };
 		111189F51FAB08BB00406FD2 /* ARDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111189F41FAB08BB00406FD2 /* ARDetailView.swift */; };
-		111189F71FAB57B000406FD2 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111189F61FAB57B000406FD2 /* FocusView.swift */; };
+		111189F71FAB57B000406FD2 /* FocusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111189F61FAB57B000406FD2 /* FocusModel.swift */; };
 		112691271F84E1E400246B19 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112691261F84E1E400246B19 /* ProfileTableViewController.swift */; };
 		1126912A1F84E2C800246B19 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112691291F84E2C800246B19 /* ProfileTableViewCell.swift */; };
 		1138EF7C1F9CC94E007EFA96 /* ManagerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1138EF7B1F9CC94E007EFA96 /* ManagerSingleton.swift */; };
@@ -69,8 +69,8 @@
 
 /* Begin PBXFileReference section */
 		111189F21FAB085B00406FD2 /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
-		111189F41FAB08BB00406FD2 /* ARDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARDetailView.swift; path = Models/ARDetailView.swift; sourceTree = "<group>"; };
-		111189F61FAB57B000406FD2 /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
+		111189F41FAB08BB00406FD2 /* ARDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARDetailView.swift; sourceTree = "<group>"; };
+		111189F61FAB57B000406FD2 /* FocusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusModel.swift; sourceTree = "<group>"; };
 		112691261F84E1E400246B19 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		112691291F84E2C800246B19 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1138EF7B1F9CC94E007EFA96 /* ManagerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManagerSingleton.swift; path = Models/ManagerSingleton.swift; sourceTree = "<group>"; };
@@ -149,13 +149,6 @@
 			path = "Support files";
 			sourceTree = "<group>";
 		};
-		114DD2051F94E67D00C2347A /* ProfileController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfileController;
-			sourceTree = "<group>";
-		};
 		1163DEF21FA861400087FA19 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +169,28 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		11C6F0EE1FA37B1400CD0744 /* ARSCene */ = {
+		11C30F091FB1B29B009AEF3E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ARSCene;
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		11C30F0A1FB1B2A2009AEF3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				111189F41FAB08BB00406FD2 /* ARDetailView.swift */,
+				113931B61FA9C518009614B6 /* ARDisplayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11C30F0B1FB1B2E2009AEF3E /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				11EC028B1FA141CD0080C174 /* DataManager.swift */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		11DC31871F7E9C4900BDB5F4 = {
@@ -206,8 +216,10 @@
 		11DC31921F7E9C4900BDB5F4 /* Key2House */ = {
 			isa = PBXGroup;
 			children = (
+				11C30F0B1FB1B2E2009AEF3E /* DB */,
+				11C30F0A1FB1B2A2009AEF3E /* View */,
+				11C30F091FB1B29B009AEF3E /* Extension */,
 				1163DEF21FA861400087FA19 /* Helper */,
-				114DD2051F94E67D00C2347A /* ProfileController */,
 				11DC319C1F7E9C4900BDB5F4 /* Assets.xcassets */,
 				11DC319E1F7E9C4900BDB5F4 /* LaunchScreen.storyboard */,
 				11DC31A11F7E9C4900BDB5F4 /* Info.plist */,
@@ -219,7 +231,6 @@
 				112691281F84E1F400246B19 /* Support files */,
 				11DC31991F7E9C4900BDB5F4 /* Main.storyboard */,
 				111189F21FAB085B00406FD2 /* DetailView.xib */,
-				111189F41FAB08BB00406FD2 /* ARDetailView.swift */,
 				1138EF7B1F9CC94E007EFA96 /* ManagerSingleton.swift */,
 			);
 			path = Key2House;
@@ -246,16 +257,13 @@
 		11DC31C31F7E9C8100BDB5F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				11C6F0EE1FA37B1400CD0744 /* ARSCene */,
 				114DD1FD1F94DB2400C2347A /* ProfileModel.swift */,
 				11DC31C61F7E9CCF00BDB5F4 /* DeelObjectModel.swift */,
 				11EC02891F9F6BDA0080C174 /* MeldingModel.swift */,
 				11DC31C81F7E9CEA00BDB5F4 /* FilterModule.swift */,
 				1198E7441F9E133900CF6D2F /* BagWozModel.swift */,
-				11EC028B1FA141CD0080C174 /* DataManager.swift */,
 				1163DEED1FA71ACF0087FA19 /* GeoManager.swift */,
-				113931B61FA9C518009614B6 /* ARDisplayView.swift */,
-				111189F61FAB57B000406FD2 /* FocusView.swift */,
+				111189F61FAB57B000406FD2 /* FocusModel.swift */,
 				115B2A5B1FAB6F72006E00C8 /* DeelobjectNode.swift */,
 			);
 			path = Models;
@@ -433,7 +441,7 @@
 				1163DF0B1FA876F50087FA19 /* FloatingPoint+Radians.swift in Sources */,
 				1163DF091FA876F50087FA19 /* SceneLocationEstimate+Extensions.swift in Sources */,
 				1163DF131FA8771F0087FA19 /* ARViewController.swift in Sources */,
-				111189F71FAB57B000406FD2 /* FocusView.swift in Sources */,
+				111189F71FAB57B000406FD2 /* FocusModel.swift in Sources */,
 				1163DF151FA87F150087FA19 /* ProgressHUD.swift in Sources */,
 				11782CCF1F87D034004824FC /* FiltermoduleTableViewCell.swift in Sources */,
 				1163DF0A1FA876F50087FA19 /* SCNNode+Extensions.swift in Sources */,

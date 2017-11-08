@@ -33,7 +33,7 @@ public class BagWozModel: NSObject {
 
     var id : String?
 
-//  var locality : Int?
+    //var locality : Int?
     
     var latestCheck: Date?
 
@@ -92,17 +92,97 @@ public class BagWozModel: NSObject {
         self.latestCheck = latestCheck
         super.init()
     }
-    
-    
+}
+
+
+
+
+
+
+
+
+
+extension BagWozModel{
     func convertAddressToString() -> String{
         //let address = "1 Infinite Loop, Cupertino, CA 95014"
         let address = self.address
         return "\(address.nr) " + address.streetname + " " +  address.city + " \(address.pc.nr) " + address.pc.code
     }
-}
-
-
-extension BagWozModel{
     
+    
+    func controleDetails(dict : [String : [MessageInterface]]) -> (date : String, deelobjecten : String){
+        var detailsString = ("", "")
+        if let controleArray = dict["controle"]{
+            if (!controleArray.isEmpty){
+                detailsString.0 = (self.latestCheck?.convertDateToString())!
+                controleArray.forEach({detailsString.1.append($0.messageText().content)})
+            }
+        }
+        
+        return detailsString
+    }
+    
+    func objectionDetails(dict : [String : [MessageInterface]]) -> (id : String, date : String){
+        var detailsString = ("", "")
+        if let objectionArray = dict["objection"]{
+            if (!objectionArray.isEmpty){
+                let objection = objectionArray.reduce(objectionArray[0], {($0.insertDate > $0.insertDate) ? $0 : $1})
+                detailsString = (objection.objectId, objection.insertDate.convertDateToString())
+            }
+        }
+        
+        return detailsString
+    }
+    
+    
+    func patentDetails(dict : [String : [MessageInterface]]) -> (id : String, type : String, date : String){
+        var detailsString = ("", "", "")
+        
+        if let patentArray = dict["patent"]{
+            if (!patentArray.isEmpty){
+                let patent = patentArray.reduce(patentArray[0], {($0.insertDate > $0.insertDate) ? $0 : $1})
+                detailsString = (patent.objectId,  patent.messageText().content, patent.insertDate.convertDateToString())
+            }
+        }
+        
+        return detailsString
+    }
+    
+    
+    func couplingDetails(dict : [String : [MessageInterface]]) -> String{
+        var detailsString = ""
+        
+        if let couplingArray = dict["coupling"]{
+            if (!couplingArray.isEmpty){
+                let coupling = couplingArray.first
+                detailsString = (coupling?.messageText().content)!
+            }
+        }
+        
+        return  detailsString
+    }
+    
+    
+    func getSortedMessages() -> [String : [MessageInterface]]{
+        let messages = self.problemNotification
+        var messagesDict : Dictionary<String , [MessageInterface]> = ["controle" : [MessageInterface](),
+                                                                      "objection" : [MessageInterface](),
+                                                                      "coupling" : [MessageInterface](),
+                                                                      "patent" : [MessageInterface]()]
+        for message in messages{
+            switch  message.type {
+                
+            case .ControleMessage(_):
+                messagesDict["controle"]?.append(message)
+            case .PatentMessage(_):
+              messagesDict["patent"]?.append(message)
+            case .CouplingMessage(_):
+                messagesDict["coupling"]?.append(message)
+            case .ObjectionMessage(_):
+                messagesDict["objection"]?.append(message)
+            }
+        }
+        return messagesDict
+    }
 }
 

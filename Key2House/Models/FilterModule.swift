@@ -107,12 +107,12 @@ class FilterModule: NSObject {
         if(bagWoz.deelobjecten.count == 0){
             wozError = true
         }
+        
         if(bagError == true || wozError == true){
             newArrayMessage.append(CoupelingMessage(type: .CouplingMessage(.registrated()), insertDate: Date(), objectId: "", messageId: "", image: #imageLiteral(resourceName: "BagWoz"), bagWoz: (bagError, wozError)))
         }
         
         return newArrayMessage
-
     }
     
     

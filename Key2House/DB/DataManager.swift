@@ -41,21 +41,21 @@ class DataManager: NSObject {
         //deelobjecten
         //7
         let obj1 = newBagWozobjects[0]
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2010".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 9000.0, descriptionObject: "Grond", fraction: DeelObjectModel.Fraction.land( k: 0, o: 0, u: 0, d: 0, v: 0)))
-        obj1.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 0.0, descriptionObject: "Berging", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(id : "2" ,size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(id : "3" , size: (10,10,10), constructionYr: "01-01-2010".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 9000.0, descriptionObject: "Grond", fraction: DeelObjectModel.Fraction.land( k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj1.deelobjecten.append(DeelObjectModel(id : "4" , size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 0.0, descriptionObject: "Berging", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
         //11
         let obj2 = newBagWozobjects[2]
-        obj2.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj2.deelobjecten.append(DeelObjectModel(id : "5" , size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
         //109
         let obj3 = newBagWozobjects[3]
-        obj3.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj3.deelobjecten.append(DeelObjectModel(id : "6" , size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 0.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
         
         let obj4 = newBagWozobjects[4]
-        obj4.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(),tax: 200.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
-           obj4.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 9000.0, descriptionObject: "Perceel", fraction: DeelObjectModel.Fraction.land(k: 0, o: 0, u: 0, d: 0, v: 0)))
-           obj4.deelobjecten.append(DeelObjectModel(size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), tax: 7000.0, descriptionObject: "Garage", fraction: DeelObjectModel.Fraction.other(k: 0, o: 0, u: 0, d: 0, v: 0)))
-        
+        obj4.deelobjecten.append(DeelObjectModel(id : "7" , size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(),tax: 200.0, descriptionObject: "Schuur", fraction: DeelObjectModel.Fraction.outerBuilding(k: 0, o: 0, u: 0, d: 0, v: 0)))
+           obj4.deelobjecten.append(DeelObjectModel(id : "8" ,size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 9000.0, descriptionObject: "Perceel", fraction: DeelObjectModel.Fraction.land(k: 0, o: 0, u: 0, d: 0, v: 0)))
+           obj4.deelobjecten.append(DeelObjectModel(id : "9" , size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 7000.0, descriptionObject: "Garage", fraction: DeelObjectModel.Fraction.other(k: 0, o: 0, u: 0, d: 0, v: 0)))
+        obj4.deelobjecten.append(DeelObjectModel(id : "10" ,size: (10,10,10), constructionYr: "01-01-2014".toDateTime(), insertDate: Date(), lastCheckDate: Date(), tax: 7000.0, descriptionObject: "HoofdWoning", fraction: DeelObjectModel.Fraction.mainResidence(k: 0, o: 0, u: 0, d: 0, v: 0)))
         
         let newMessages : [MessageInterface] = [
         PatentMessage(type: .PatentMessage(.In_progress()), insertDate: "01-01-2015".toDateTime(), objectId: "test1", messageId: "absc", image: #imageLiteral(resourceName: "Vergunnig"), patentTitle: "Tuin"),

@@ -18,22 +18,24 @@ class ARViewController: UIViewController {
         case focusview(m : BagWozModel)
     }
 
-    
-    var displayView : ARDisplayView?
-    var sceneLocationView = SceneLocationView()
+
+    static var ARControllerDelegate:ARViewController?
+
+    private var sceneLocationView = SceneLocationView()
+    private let progressHUD = ProgressHUD(text: "Loading data")
+
     var data = [BagWozModel]()
     var geoManager : GeoLocationManager?
-    private let progressHUD = ProgressHUD(text: "Loading data")
     var currentSessieNodes = [LocationAnnotationNode]()
-  
-    static var ARControllerDelegate:ARViewController?
+    var selectedModel :  BagWozModel?
+    var displayView : ARDisplayView?
+    var focus : FocusModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.displayView = ARDisplayView(controllerDelegate: self, superView: self.view)
         ARViewController.ARControllerDelegate = self
 
-        self.geoManager = GeoLocationManager(delegateARSessie: self)
+        
         //InitDataManager(streetname: "Antwerpseweg")
 
         view.addSubview(sceneLocationView)
@@ -42,7 +44,14 @@ class ARViewController: UIViewController {
        // InitDataManager(streetname:  "Burgemeester van Reenensingel")
         
         sceneLocationView.run()
+        
+        
+        self.displayView = ARDisplayView(controllerDelegate: self, superView: self.view)
         self.setDisplayModeState(state: .normal)
+        
+        
+        self.geoManager = GeoLocationManager(delegateARSessie: self)
+
         //ARViewController.displayView = ARDisplayView(superView: self.view, controllerDelegate: self)
         
     }
@@ -60,13 +69,15 @@ class ARViewController: UIViewController {
             currentSessieNodes.append(annotationNode)
         }
     }
-   /* public func sessieObjectsIsHidden(_ hidden : Bool){
+    
+    
+    private func hideAllSessieObjects(_ hidden : Bool){
         if(hidden){
-            hideAllHouseObjects()
+            currentSessieNodes.forEach({$0.isHidden = true})
         }else {
-            showAllHouseObjects()
+            currentSessieNodes.forEach({$0.isHidden = false})
         }
-    }*/
+    }
     
     private func removeAllNodes(){
         for object in self.currentSessieNodes{
@@ -88,15 +99,21 @@ class ARViewController: UIViewController {
     
     func setDisplayModeState(state : DisplayState){
         self.displayView?.cleanDisplay()
+        if let f = self.focus {
+            f.cleanFocusMode()
+            self.focus = nil
+        }
         
         switch state {
         case .detailView(let m):
             self.displayView?.detailDisplayView(model : m)
+            self.hideAllSessieObjects(false)
         case .focusview(let m):
             self.displayView?.focusDisplayView(model: m)
+            self.hideAllSessieObjects(true)
         case .normal:
             self.displayView?.normalDisplayView()
-            print("normal")
+            self.hideAllSessieObjects(false)
         }
         
         self.displayView?.drawDisplay(superView: self.view)
@@ -116,20 +133,12 @@ class ARViewController: UIViewController {
 
 
 extension ARViewController{
-   /* private func hideAllHouseObjects(){
-        let sessieNode = ARViewController.currentSessieNodes
-        for node in  sessieNode{
-            node.isHidden = true
-        }
-    }*/
-    
-   /*
-    private func showAllHouseObjects(){
-        let sessieNode = ARViewController.currentSessieNodes
-        for node in  sessieNode{
-            node.isHidden = false
-        }
-    }*/
+
+    func focusViewState(focus : FocusModel){
+        self.focus = focus
+        self.focus?.rootnode.position = SCNVector3(0,-0.5,-1.0)
+        self.sceneLocationView.scene.rootNode.addChildNode((self.focus?.rootnode)!)
+    }
 }
 
 

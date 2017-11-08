@@ -119,6 +119,13 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         tapPressRecongnizer.numberOfTapsRequired = 2
         self.addGestureRecognizer(tapPressRecongnizer)
         
+        
+        //pan
+        let rotateRecongnizer = UIPanGestureRecognizer(target: self, action: #selector(rotatePressed(_:)))
+        rotateRecongnizer.minimumNumberOfTouches = 1
+        self.addGestureRecognizer(rotateRecongnizer)
+        
+        
     }
     
     override public func layoutSubviews() {
@@ -197,7 +204,10 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     }
     
 //me
-
+    
+    @objc func rotatePressed(_ sender: UIPanGestureRecognizer){
+     ARViewController.ARControllerDelegate?.focus?.rotate(sender)
+    }
     
     @objc func tapPressed(_ sender: UITapGestureRecognizer){
         let delegate = ARViewController.ARControllerDelegate
@@ -211,8 +221,9 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 print(node.name)
                return item.name == node.name
             })
-            
-            delegate?.setDisplayModeState(state: .detailView(m: (m?.bagwozModel)!))
+            if let model = m{
+                delegate?.setDisplayModeState(state: .detailView(m: model.bagwozModel))
+            }
         }
     }
     

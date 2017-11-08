@@ -25,9 +25,6 @@ enum Status{
 }
 
 
-
-
-
 protocol MessageInterface
 {
 
@@ -37,19 +34,13 @@ protocol MessageInterface
     var objectId : String{set get}
     var title : String{set get}
     var messageImage: UIImage{set get}
-    func messageText() -> (title : String, content : String)
+    func messageText() -> (title : String, content : String, id : String)
     func changeStatus(status : Status)
     func getStatus()->Status
-    
+
 }
 
 class ControleMessage : MessageInterface{
-    func getStatus() -> Status {
-        if case  TypeMessage.ControleMessage(let x) = self.type {
-            return x
-        }
-        return Status.done()
-    }
     
     
     
@@ -63,12 +54,20 @@ class ControleMessage : MessageInterface{
     var title: String
     var objectId : String
     
+    func getStatus() -> Status {
+        if case  TypeMessage.ControleMessage(let x) = self.type {
+            return x
+        }
+        return Status.done()
+    }
+    
+    
     func changeStatus(status: Status) {
        self.type = .ControleMessage(status)
     }
     
-    func messageText() -> (title: String, content: String) {
-        return (self.title, deelobject.descriptionObject!)
+    func messageText() -> (title: String, content: String, id : String) {
+        return (self.title, deelobject.descriptionObject!, self.messageId)
     }
     
     
@@ -87,12 +86,7 @@ class ControleMessage : MessageInterface{
 
 class PatentMessage : MessageInterface{
     
-    
-    
-    private let typePatent : String?
-    
     var messageImage: UIImage
-    
     var type: TypeMessage
     var insertDate : Date
     var messageId : String
@@ -103,12 +97,8 @@ class PatentMessage : MessageInterface{
         self.type = .PatentMessage(status)
     }
     
-    func messageText() -> (title: String, content: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        
-        let v = self.objectId + " | " + self.typePatent! + " | " + dateFormatter.string(from: self.insertDate)
-        return (self.title,v)
+    func messageText() -> (title: String, content: String, id : String) {
+        return ("Vergunning",self.title, self.messageId)
     }
     
     func getStatus() -> Status {
@@ -126,7 +116,6 @@ class PatentMessage : MessageInterface{
         self.messageImage = image
         self.title = patentTitle
         self.type = type
-        self.typePatent = patentTitle
         
     }
 }
@@ -135,7 +124,6 @@ class PatentMessage : MessageInterface{
 
 class ObjectionMessage : MessageInterface{
     var type: TypeMessage
-    
     
     var objectionLetter : String?
 
@@ -149,12 +137,8 @@ class ObjectionMessage : MessageInterface{
         self.type = .ObjectionMessage(status)
     }
     
-    func messageText() -> (title: String, content: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        
-        let v = self.objectId + " | " + dateFormatter.string(from: self.insertDate)
-        return (self.title,v)
+    func messageText() -> (title: String, content: String, id : String) {
+        return (self.title, self.objectionLetter!, self.messageId)
     }
     
     
@@ -199,14 +183,13 @@ class CoupelingMessage : MessageInterface{
 
     }
     
-    func messageText() -> (title: String, content: String) {
+    func messageText() -> (title: String, content: String, id : String) {
         
         let b = self.bagEmpty! ? "bag" : ""
         let w = self.wozEmpty! ? "woz" : ""
         let v = b + " " + w + "  onbekend"
         
-        
-        return (self.title,v)
+        return (self.title,v, self.messageId)
     }
     
     func getStatus() -> Status {

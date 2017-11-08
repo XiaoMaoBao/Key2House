@@ -56,7 +56,9 @@ class DeelObjectModel: NSObject {
         self.size = Size(width: size.0, height: size.1, depth: size.2)
     }
     
-    init(size : (Double, Double, Double), constructionYr : Date, insertDate : Date, lastCheckDate : Date? = nil, tax : Double, descriptionObject : String, fraction : Fraction) {
+    init(id : String ,size : (Double, Double, Double), constructionYr : Date, insertDate : Date, lastCheckDate : Date? = nil, tax : Double, descriptionObject : String, fraction : Fraction) {
+        self.id = id
+        
         self.size.width = size.0
         self.size.width = size.1
         self.size.width = size.2
@@ -86,9 +88,9 @@ class DeelObjectModel: NSObject {
     func fractionDetails() -> (name : String, k: Int, o : Int, u : Int, d : Int, v : Int){
             switch self.fraction {
             case .land(let k, let o, let u, let d, let v):
-                return ("Grond", k, o, u, d, v)
+                return ("Perceel", k, o, u, d, v)
             case .mainResidence(let k, let o, let u, let d, let v):
-                return ("Hoofdwoning",k, o, u, d, v)
+                return ("Woning",k, o, u, d, v)
             case .other(let k, let o, let u, let d, let v):
                 return ("Overige",k, o, u, d, v)
             case .outerBuilding(let k, let o, let u, let d, let v):
