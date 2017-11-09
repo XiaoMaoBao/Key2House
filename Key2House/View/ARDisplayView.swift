@@ -13,49 +13,14 @@ class ARDisplayView: NSObject {
     
     private var currentDisplayView : [UIView] = []
     private let delegateArController : ARViewController
-    /*
-    enum DisplayState{
-        case normal
-        case detailView(model : BagWozModel)
-        case focusview(model : BagWozModel)
-    }
-    */
+ 
     let geographicalLabel = UILabel()
     private let superViewFrame : CGRect
     private let superViewBounds : CGRect
 
-    //private let viewcontrollerDelegate : ARViewController
-    //private var displayState : DisplayState?
-    //private var currentElements : [UIView] = []
     private let geographicalView : UIView
-    //private let superView : UIView
-    //private var currentModel : BagWozModel?
-    
-    /*
-    func setDisplayState(displayState : DisplayState){
-       self.displayState = displayState
-        
-        if let state = self.displayState{
-            switch state {
-            case .normal :
-                print("Normaalview")
-                self.cleanSuperView()
-                self.normalDisplayViewState()
 
-            case .detailView(let m):
-                print("detailview")
-                self.cleanSuperView()
-                self.detailDisplayViewState(model: m)
-            
-            case .focusview(let m):
-                print("focusView")
-                self.cleanSuperView()
-                self.focusDisplayViewState(model: m)
-            }
-        }
-    }
-    */
-    
+
 
     init(controllerDelegate : ARViewController, superView : UIView) {
         self.delegateArController = controllerDelegate
@@ -65,24 +30,26 @@ class ARDisplayView: NSObject {
         
         super.init()
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = geographicalView.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
         geographicalLabel.text = "Bereken locatie..."
         geographicalLabel.frame = geographicalView.bounds
         geographicalLabel.frame.origin.y += 10
         geographicalLabel.textAlignment = .center
         geographicalLabel.textColor = UIColor(displayP3Red: 0/255, green: 150/255, blue: 63/255, alpha: 1)
-        geographicalView.addSubview(blurEffectView)
+        geographicalView.addSubview(createblurView(bounds: geographicalView.bounds))
         geographicalView.addSubview(geographicalLabel)
         
         superView.addSubview(geographicalView)
     }
     
 
-
+    private func createblurView(bounds : CGRect) -> UIView{
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        return blurEffectView
+    }
     
     @objc private func stopSession(){
         let isPresentingInAddMealMode = self.delegateArController.presentingViewController is UITabBarController
@@ -202,6 +169,57 @@ extension ARDisplayView{
         stopCircleBtn.setTitle("X", for: .normal)
         stopCircleBtn.addTarget(self, action: #selector(setDisplayStateNormal), for: .touchUpInside)
         
+
+        let h : CGFloat = 80
+        let sizeBtn : CGSize = CGSize(width: 50, height: 50)
+        let offset : CGFloat = (superViewFrame.width - (4*sizeBtn.width)) / 6
+    
+        print(offset)
+        
+        
+        let toolbar = UIView(frame: CGRect(x: 0, y: self.superViewFrame.height - h, width: self.superViewFrame.width, height: h))
+        toolbar.addSubview(createblurView(bounds: toolbar.bounds))
+        
+        let btn1 = UIButton()
+        btn1.frame = CGRect(x: toolbar.bounds.origin.x + offset, y: toolbar.bounds.origin.y, width: sizeBtn.width, height: sizeBtn.height)
+        btn1.layer.cornerRadius = 0.5 * btn1.bounds.size.width
+        btn1.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        btn1.clipsToBounds = true
+        btn1.titleLabel?.textColor = UIColor.white
+        btn1.setTitle("Q", for: .normal)
+        
+        let btn2 = UIButton()
+        btn2.frame = CGRect(x: btn1.frame.origin.x + sizeBtn.width + offset, y: toolbar.bounds.origin.y, width:  sizeBtn.width, height: sizeBtn.height)
+        btn2.layer.cornerRadius = 0.5 * btn2.bounds.size.width
+        btn2.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        btn2.clipsToBounds = true
+        btn2.titleLabel?.textColor = UIColor.white
+        btn2.setTitle("W", for: .normal)
+        
+        
+        let btn3 = UIButton()
+        btn3.frame = CGRect(x: btn2.frame.origin.x + (sizeBtn.width) + offset, y: toolbar.bounds.origin.y, width:  sizeBtn.width, height: sizeBtn.height)
+        btn3.layer.cornerRadius = 0.5 * btn3.bounds.size.width
+        btn3.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        btn3.clipsToBounds = true
+        btn3.titleLabel?.textColor = UIColor.white
+        btn3.setTitle("E", for: .normal)
+        
+        
+        let btn4 = UIButton()
+        btn4.frame = CGRect(x: btn3.frame.origin.x + (sizeBtn.width) + offset, y: toolbar.bounds.origin.y,width:  sizeBtn.width, height: sizeBtn.height)
+        btn4.layer.cornerRadius = 0.5 * btn4.bounds.size.width
+        btn4.backgroundColor = UIColor(red: 0/255, green: 94/255, blue: 168/255, alpha: 1)
+        btn4.clipsToBounds = true
+        btn4.titleLabel?.textColor = UIColor.white
+        btn4.setTitle("", for: .normal)
+        
+        toolbar.addSubview(btn1)
+        toolbar.addSubview(btn2)
+        toolbar.addSubview(btn3)
+        toolbar.addSubview(btn4)
+
+        self.currentDisplayView.append(toolbar)
         self.currentDisplayView.append(stopCircleBtn)
         self.delegateArController.focusViewState(focus : focusModel)
     }
@@ -224,6 +242,8 @@ extension ARDisplayView{
             }
     }
 }
+
+
 
 extension Date{
      func  convertDateToString() -> String{

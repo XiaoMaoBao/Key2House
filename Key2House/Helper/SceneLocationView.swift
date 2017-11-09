@@ -217,10 +217,18 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
         if let node = hittest.first?.node{
             
             let m = delegate?.currentSessieNodes.first(where: { (item) -> Bool in
-                print(item.name)
+               // print(item.name)
                 print(node.name)
                return item.name == node.name
             })
+            
+            if let value = node.value(forKey: node.name!){
+                print("Value is : " + "\(value)" )
+                delegate?.displayDetailFocusView(id: Int("\(value)")!)
+            }
+        
+            
+            
             if let model = m{
                 delegate?.setDisplayModeState(state: .detailView(m: model.bagwozModel))
             }

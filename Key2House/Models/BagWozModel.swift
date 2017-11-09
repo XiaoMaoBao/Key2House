@@ -97,11 +97,6 @@ public class BagWozModel: NSObject {
 
 
 
-
-
-
-
-
 extension BagWozModel{
     func convertAddressToString() -> String{
         //let address = "1 Infinite Loop, Cupertino, CA 95014"

@@ -72,6 +72,12 @@ class FocusModel: NSObject {
         let otherNode = rootnode.childNode(withName : "Overige", recursively: true)!
         let mainResidenceNode = rootnode.childNode(withName : "Woning", recursively: true)!
         
+        currentBuildingBlockSessie["Perceel"] = []
+        currentBuildingBlockSessie["Bijgebouw"] = []
+        currentBuildingBlockSessie["Overige"] = []
+        currentBuildingBlockSessie["Woning"] = []
+
+        
         self.buildingBlocks = [landNode,
                               outerBuildingNode,
                               otherNode,
@@ -93,18 +99,22 @@ class FocusModel: NSObject {
                     let node = buildingBlocks.first(where: {$0.name == dObject.fractionDetails().name})
                     if let n = node{
                         //create
-                        n.setValue(dObject.id!, forKey: n.name!)
-                        self.currentBuildingBlockSessie[n.name!]?.append(n)
-                        
+                        if let name = n.name{
+                            let newNode = n.clone()
+                            //n.setValue(dObject.id!, forKey: name)
+                            newNode.childNodes.forEach({$0.setValue(dObject.id!, forKey: name)})
+                            self.currentBuildingBlockSessie[name]?.append(newNode)
+                        }
                     }
                 }
             //return
             }
         
         
-        if (self.currentBuildingBlockSessie["Perceel"] != nil){
+        if (self.currentBuildingBlockSessie["Perceel"]?.isEmpty)!{
             let node = self.buildingBlocks.first(where : {$0.name! == "Perceel"})?.clone()
-            node?.setValue("Empty", forKey: (node?.name!)!)
+            node?.setValue("Empty", forKey: (node?.name)!)
+            self.currentBuildingBlockSessie["Perceel"]?.append(node!)
             //return
             
         }
@@ -116,36 +126,38 @@ class FocusModel: NSObject {
     
     
     private func rePostioneringBlocks(){
+       
         for key in self.currentBuildingBlockSessie.keys{
             switch(key){
             case "Perceel" :
-                self.setPosition((0,1,0), nodes: self.currentBuildingBlockSessie[key]!)
+                self.setPosition((0,0,0), nodes: self.currentBuildingBlockSessie[key]!)
             case "Bijgebouw" :
                 self.setPosition((0,0,1), nodes: self.currentBuildingBlockSessie[key]!)
             case "Overige":
-                self.setPosition((0,0,1), nodes: self.currentBuildingBlockSessie[key]!)
-            case "Woning":
                 self.setPosition((0,1,0), nodes: self.currentBuildingBlockSessie[key]!)
+            case "Woning":
+                self.setPosition((0,0,1), nodes: self.currentBuildingBlockSessie[key]!)
             default :
                 print("Nothing")
             }
         }
     }
     
+    
+    // z up/down
+    //y forward/backward
+    //x left/right
     private func setPosition(_ vector3 : (Float,Float,Float), nodes: [SCNNode]){
         //self.rootnode.addChildNode(node)
         //node.position =
         var currentPosition = SCNVector3(0,0,0)
         for node in nodes{
-            self.rootnode.addChildNode(node)
-         
-            
             if (SCNVector3EqualToVector3(currentPosition, SCNVector3(0,0,0))){
                 currentPosition = node.position
             }else{
-                let newVector = SCNVector3(node.position.x * vector3.0,
-                                           node.position.y * vector3.1,
-                                           node.position.z * vector3.2)
+                let newVector = SCNVector3(node.boundingBox.max.x * vector3.0,
+                                           node.boundingBox.max.y * vector3.1,
+                                           node.boundingBox.max.z * vector3.2)
                 currentPosition.x += newVector.x
                 currentPosition.y += newVector.y
                 currentPosition.z += newVector.z

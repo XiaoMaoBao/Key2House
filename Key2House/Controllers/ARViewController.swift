@@ -134,6 +134,11 @@ class ARViewController: UIViewController {
 
 extension ARViewController{
 
+    func displayDetailFocusView(id :Int){
+        self.displayView?.focusDetialdisplayView(model: self.selectedModel!, deelobjectId: id)
+    }
+    
+    
     func focusViewState(focus : FocusModel){
         self.focus = focus
         self.focus?.rootnode.position = SCNVector3(0,-0.5,-1.0)
